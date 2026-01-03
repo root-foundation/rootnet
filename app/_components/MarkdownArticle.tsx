@@ -1,0 +1,397 @@
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import Link from "next/link";
+
+import { getYouTubeEmbedUrl } from "@/lib/youtube";
+import { PrevNextNav, type NavLink } from "@/app/_components/PrevNextNav";
+
+type MarkdownArticleProps = {
+  title: string;
+  caption?: string;
+  video?: string;
+  profileSrc?: string;
+  previous?: NavLink | null;
+  next?: NavLink | null;
+  markdown: string;
+};
+
+export function MarkdownArticle({
+  title,
+  caption,
+  video,
+  profileSrc,
+  previous,
+  next,
+  markdown,
+}: MarkdownArticleProps) {
+  const heroVideoEmbedUrl = video ? getYouTubeEmbedUrl(video) : null;
+
+  return (
+    <main style={styles.page}>
+      <Link href="/" aria-label="Home" style={styles.logoLink}>
+        <img src="/rootnet-logo.svg" alt="rootnet" style={styles.logoImg} />
+      </Link>
+      <article style={styles.article}>
+        <header style={styles.header}>
+          {profileSrc ? (
+            <img
+              src={profileSrc}
+              alt=""
+              aria-hidden
+              style={styles.profileImg}
+            />
+          ) : null}
+          <h1 style={styles.h1}>{title}</h1>
+          {caption ? <p style={styles.caption}>{caption}</p> : null}
+          {heroVideoEmbedUrl ? (
+            <div style={styles.heroVideoWrap}>
+              <div style={styles.youtubeFrame}>
+                <iframe
+                  src={heroVideoEmbedUrl}
+                  title="YouTube video"
+                  style={styles.youtubeIframe}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ) : null}
+        </header>
+
+        <div style={styles.content}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              // Rule: top heading is the page title (from frontmatter/filename).
+              // Any markdown H1 inside the body should render as an H2.
+              h1: ({ node: _node, ...props }) => (
+                <h2 style={styles.h2} {...props} />
+              ),
+              // Rule: other headings are H2s.
+              h2: ({ node: _node, ...props }) => (
+                <h2 style={styles.h2} {...props} />
+              ),
+              // Rule: H3 should look like body text, just 500 weight.
+              h3: ({ node: _node, ...props }) => (
+                <p style={styles.h3AsBody} {...props} />
+              ),
+              p: ({ node, ...props }) => {
+                const standaloneUrl = getStandaloneUrlFromParagraphNode(node);
+                const embedUrl = standaloneUrl
+                  ? getYouTubeEmbedUrl(standaloneUrl)
+                  : null;
+
+                if (embedUrl) {
+                  return (
+                    <div style={styles.youtubeWrap}>
+                      <div style={styles.youtubeFrame}>
+                        <iframe
+                          src={embedUrl}
+                          title="YouTube video"
+                          style={styles.youtubeIframe}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+
+                return <p style={styles.p} {...props} />;
+              },
+              ul: ({ node: _node, ...props }) => (
+                <ul style={styles.ul} {...props} />
+              ),
+              ol: ({ node: _node, ...props }) => (
+                <ol style={styles.ol} {...props} />
+              ),
+              li: ({ node: _node, ...props }) => (
+                <li style={styles.li} {...props} />
+              ),
+              blockquote: ({ node: _node, ...props }) => (
+                <blockquote style={styles.blockquote} {...props} />
+              ),
+              strong: ({ node: _node, ...props }) => (
+                <strong style={styles.strong} {...props} />
+              ),
+              a: ({ href, node: _node, ...props }) => (
+                <a
+                  href={href}
+                  style={styles.a}
+                  target={href?.startsWith("#") ? undefined : "_blank"}
+                  rel={href?.startsWith("#") ? undefined : "noreferrer"}
+                  {...props}
+                />
+              ),
+              code: ({ children, node: _node, ...props }) => (
+                <code style={styles.codeInline} {...props}>
+                  {children}
+                </code>
+              ),
+              pre: ({ node: _node, ...props }) => (
+                <pre style={styles.pre} {...props} />
+              ),
+              table: ({ node: _node, ...props }) => (
+                <div style={styles.tableWrap}>
+                  <table style={styles.table} {...props} />
+                </div>
+              ),
+              th: ({ node: _node, ...props }) => (
+                <th style={styles.th} {...props} />
+              ),
+              td: ({ node: _node, ...props }) => (
+                <td style={styles.td} {...props} />
+              ),
+              hr: ({ node: _node, ...props }) => (
+                <hr style={styles.hr} {...props} />
+              ),
+            }}
+          >
+            {markdown || ""}
+          </ReactMarkdown>
+
+          <PrevNextNav previous={previous ?? null} next={next ?? null} />
+        </div>
+      </article>
+    </main>
+  );
+}
+
+function getStandaloneUrlFromParagraphNode(node: unknown): string | null {
+  // Only embed if the paragraph contains exactly one child:
+  // - a text node containing a URL, or
+  // - a single anchor whose href is a URL (GFM autolinks / markdown links)
+  if (!node || typeof node !== "object") return null;
+
+  const children = (node as { children?: unknown }).children;
+  if (!Array.isArray(children) || children.length !== 1) return null;
+
+  const only = children[0];
+  if (!only || typeof only !== "object") return null;
+
+  const onlyRec = only as Record<string, unknown>;
+
+  // Plain text: "https://youtube.com/watch?v=..."
+  if (onlyRec.type === "text" && typeof onlyRec.value === "string") {
+    const url = onlyRec.value.trim();
+    return url.length > 0 ? url : null;
+  }
+
+  // Single link: <a href="...">...</a>
+  if (
+    onlyRec.type === "element" &&
+    onlyRec.tagName === "a" &&
+    typeof onlyRec.properties === "object" &&
+    onlyRec.properties !== null &&
+    typeof (onlyRec.properties as Record<string, unknown>).href === "string"
+  ) {
+    const href = String(
+      (onlyRec.properties as Record<string, unknown>).href
+    ).trim();
+    return href.length > 0 ? href : null;
+  }
+
+  return null;
+}
+
+const styles: Record<string, React.CSSProperties> = {
+  page: {
+    minHeight: "100vh",
+    background: "#ffffff",
+    color: "#111111",
+    padding: "192px 24px 96px",
+    display: "flex",
+    justifyContent: "center",
+  },
+  logoLink: {
+    position: "fixed",
+    top: 24,
+    left: 24,
+    zIndex: 10,
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textDecoration: "none",
+    padding: "10px 12px",
+    borderRadius: 14,
+    background: "rgba(255, 255, 255, 0.72)",
+    border: "1px solid rgba(0, 0, 0, 0.06)",
+    boxShadow: "0 6px 18px rgba(0, 0, 0, 0.06)",
+    backdropFilter: "blur(10px)",
+    WebkitBackdropFilter: "blur(10px)",
+    opacity: 0.92,
+    transition: "opacity 120ms ease",
+  },
+  logoImg: {
+    height: 22,
+    width: "auto",
+    display: "block",
+  },
+  article: {
+    width: "100%",
+    maxWidth: 600,
+  },
+  header: {
+    marginBottom: 96,
+    textAlign: "left",
+  },
+  profileImg: {
+    width: 128,
+    height: 128,
+    borderRadius: 999,
+    objectFit: "cover",
+    display: "block",
+    marginBottom: 20,
+    background: "rgba(0, 0, 0, 0.04)",
+  },
+  h1: {
+    fontSize: 48,
+    lineHeight: "56px",
+    // Double-tighten vs Figma "-2%" to match visual spacing in-browser.
+    letterSpacing: "-0.06em",
+    fontWeight: 300,
+    margin: 0,
+    color: "#111111",
+  },
+  caption: {
+    margin: "12px 0 0",
+    fontSize: 24,
+    lineHeight: "32px",
+    fontWeight: 400,
+    color: "#111111",
+    opacity: 0.6,
+    letterSpacing: "-0.02em",
+  },
+  heroVideoWrap: {
+    marginTop: 72,
+  },
+  content: {
+    width: "100%",
+    fontSize: 16,
+    lineHeight: "24px",
+    fontWeight: 400,
+    color: "#111111",
+  },
+  h2: {
+    fontSize: 20,
+    lineHeight: "32px",
+    marginTop: 48,
+    marginBottom: 24,
+    fontWeight: 480,
+    // Figma letter-spacing "-2%" ≈ CSS letter-spacing "-0.02em"
+    letterSpacing: "-0.02em",
+    color: "#111111",
+  },
+  h3AsBody: {
+    fontSize: 16,
+    lineHeight: "24px",
+    // We assume H3s are preceded by a divider (hr), so the divider controls the top spacing.
+    marginTop: 0,
+    marginBottom: 24,
+    fontWeight: 550,
+    color: "#111111",
+  },
+  p: {
+    margin: "0 0 24px",
+    color: "#111111",
+  },
+  ul: {
+    margin: "12px 0",
+    paddingLeft: 22,
+  },
+  ol: {
+    margin: "12px 0",
+    paddingLeft: 22,
+  },
+  li: {
+    margin: "6px 0",
+  },
+  blockquote: {
+    margin: "0 0 24px",
+    padding: 0,
+    borderLeft: "none",
+    background: "transparent",
+    borderRadius: 0,
+    color: "#111111",
+    opacity: 0.55,
+    fontStyle: "italic",
+  },
+  strong: {
+    fontWeight: 500,
+  },
+  a: {
+    color: "#111111",
+    textDecoration: "underline",
+    textUnderlineOffset: 3,
+  },
+  codeInline: {
+    fontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    fontSize: "0.92em",
+    padding: "0.15em 0.35em",
+    borderRadius: 8,
+    border: "1px solid rgba(127,127,127,0.25)",
+    background: "rgba(127,127,127,0.12)",
+  },
+  pre: {
+    margin: "16px 0",
+    padding: 14,
+    overflowX: "auto",
+    borderRadius: 12,
+    border: "1px solid rgba(127,127,127,0.25)",
+    background: "rgba(127,127,127,0.10)",
+    fontFamily:
+      'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    fontSize: 13,
+    lineHeight: "22px",
+    color: "#111111",
+  },
+  tableWrap: {
+    width: "100%",
+    overflowX: "auto",
+    margin: "16px 0",
+    borderRadius: 12,
+    border: "1px solid rgba(127,127,127,0.25)",
+  },
+  table: {
+    width: "100%",
+    borderCollapse: "collapse",
+  },
+  th: {
+    textAlign: "left",
+    padding: "10px 12px",
+    borderBottom: "1px solid rgba(127,127,127,0.25)",
+    background: "rgba(127,127,127,0.08)",
+    color: "#111111",
+  },
+  td: {
+    padding: "10px 12px",
+    borderBottom: "1px solid rgba(127,127,127,0.18)",
+    color: "#111111",
+  },
+  hr: {
+    border: "none",
+    borderTop: "1px solid rgba(0, 0, 0, 0.05)",
+    // Keep spacing symmetric: above divider == divider->H3 == H3->next paragraph == 24px.
+    margin: "24px 0",
+  },
+  youtubeWrap: {
+    margin: "0 0 24px",
+  },
+  youtubeFrame: {
+    position: "relative",
+    width: "100%",
+    paddingTop: "56.25%", // 16:9
+    background: "rgba(0,0,0,0.04)",
+    borderRadius: 12,
+    overflow: "hidden",
+  },
+  youtubeIframe: {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    border: "none",
+  },
+};

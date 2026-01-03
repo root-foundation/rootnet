@@ -1,0 +1,59 @@
+{
+  "heroTitleLines": [
+    "rootnet is an exploration"
+  ],
+  "heroCaptionLines": [
+    "to align our world to reality",
+    "through better incentives",
+    "from better instruments."
+  ],
+  "sections": [
+    {
+      "kind": "story",
+      "title": "story",
+      "groups": [
+        [
+          { "slug": "personal-token" },
+          { "slug": "extreme-outcomes" },
+          { "slug": "tokens-will-eat-world" }
+        ],
+        [
+          { "slug": "single-organism" },
+          { "slug": "unity-incentives" },
+          { "slug": "uniting-world" }
+        ],
+        [{ "slug": "psychosis" }, { "slug": "fixing-markets" }, { "slug": "growth" }],
+        [
+          { "slug": "culture" },
+          { "slug": "education" },
+          { "slug": "rising-above-transactional" },
+          { "slug": "ai-will-never-replace-us" }
+        ]
+      ]
+    },
+    {
+      "kind": "list",
+      "title": "instruments",
+      "links": [{ "slug": "PERSONAL_TOKEN" }]
+    },
+    {
+      "kind": "list",
+      "title": "tokens",
+      "links": [{ "slug": "root" }, { "slug": "homan" }, { "slug": "shiv" }]
+    },
+    {
+      "kind": "list",
+      "title": "rootnet",
+      "links": [
+        { "slug": "exploration" },
+        { "slug": "america" },
+        { "slug": "next-steps" },
+        { "slug": "support" },
+        { "slug": "join" },
+        { "slug": "thanks" }
+      ]
+    }
+  ]
+}
+
+
