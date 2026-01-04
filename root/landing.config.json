@@ -41,7 +41,7 @@
     {
       "kind": "list",
       "title": "tokens",
-      "links": [{ "slug": "root" }, { "slug": "homan" }, { "slug": "shiv" }]
+      "links": [{ "slug": "root" }]
     },
     {
       "kind": "list",
