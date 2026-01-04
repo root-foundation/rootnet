@@ -26,6 +26,7 @@ export function MarkdownArticle({
   markdown,
 }: MarkdownArticleProps) {
   const heroVideoEmbedUrl = video ? getYouTubeEmbedUrl(video) : null;
+  const normalizedCaption = normalizeOptionalCaption(caption);
 
   return (
     <main style={styles.page}>
@@ -43,7 +44,9 @@ export function MarkdownArticle({
             />
           ) : null}
           <h1 style={styles.h1}>{title}</h1>
-          {caption ? <p style={styles.caption}>{caption}</p> : null}
+          {normalizedCaption ? (
+            <p style={styles.caption}>{normalizedCaption}</p>
+          ) : null}
           {heroVideoEmbedUrl ? (
             <div style={styles.heroVideoWrap}>
               <div style={styles.youtubeFrame}>
@@ -106,9 +109,58 @@ export function MarkdownArticle({
               ol: ({ node: _node, ...props }) => (
                 <ol style={styles.ol} {...props} />
               ),
-              li: ({ node: _node, ...props }) => (
-                <li style={styles.li} {...props} />
-              ),
+              li: (liProps) => {
+                const { node: _node, children, ...props } = liProps;
+                // `react-markdown` provides `ordered` at runtime, but the published types
+                // don’t include it on the `li` renderer props.
+                const ordered = Boolean(
+                  (liProps as unknown as { ordered?: boolean }).ordered
+                );
+                const normalizedChildren = React.Children.map(
+                  children,
+                  (child) => {
+                    // ReactMarkdown commonly wraps list item content in a <p>.
+                    // Our paragraph style has a large bottom margin that makes list
+                    // spacing look wrong, so we zero it out inside list items.
+                    if (React.isValidElement(child) && child.type === "p") {
+                      const childProps = (
+                        child as React.ReactElement<{
+                          style?: React.CSSProperties;
+                        }>
+                      ).props;
+                      return React.cloneElement(
+                        child as React.ReactElement<
+                          React.HTMLAttributes<HTMLParagraphElement>
+                        >,
+                        {
+                          style: {
+                            ...(childProps.style ?? {}),
+                            ...styles.pInListItem,
+                          },
+                        }
+                      );
+                    }
+                    return child;
+                  }
+                );
+
+                if (ordered) {
+                  return (
+                    <li style={styles.liOrdered} {...props}>
+                      {normalizedChildren}
+                    </li>
+                  );
+                }
+
+                return (
+                  <li style={styles.liUnordered} {...props}>
+                    <span aria-hidden style={styles.liDash}>
+                      <DashIcon />
+                    </span>
+                    <span style={styles.liBody}>{normalizedChildren}</span>
+                  </li>
+                );
+              },
               blockquote: ({ node: _node, ...props }) => (
                 <blockquote style={styles.blockquote} {...props} />
               ),
@@ -158,6 +210,27 @@ export function MarkdownArticle({
   );
 }
 
+function DashIcon() {
+  return (
+    <svg
+      height="16"
+      width="16"
+      viewBox="0 0 16 16"
+      strokeLinejoin="round"
+      aria-hidden
+      focusable="false"
+      style={styles.liDashIcon}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2 7.25H2.75H13.25H14V8.75H13.25H2.75H2V7.25Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 function getStandaloneUrlFromParagraphNode(node: unknown): string | null {
   // Only embed if the paragraph contains exactly one child:
   // - a text node containing a URL, or
@@ -193,6 +266,16 @@ function getStandaloneUrlFromParagraphNode(node: unknown): string | null {
   }
 
   return null;
+}
+
+function normalizeOptionalCaption(input?: string): string | null {
+  if (typeof input !== "string") return null;
+  // Protect layout from "invisible" captions (e.g. zero-width spaces) that still
+  // render an empty <p> and reserve vertical space.
+  const hasVisibleChars =
+    input.replace(/[\s\u200B\u200C\u200D\uFEFF]/g, "").length > 0;
+  if (!hasVisibleChars) return null;
+  return input.trim();
 }
 
 const styles: Record<string, React.CSSProperties> = {
@@ -255,7 +338,7 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#111111",
   },
   caption: {
-    margin: "12px 0 0",
+    margin: "24px 0 0",
     fontSize: 24,
     lineHeight: "32px",
     fontWeight: 400,
@@ -296,16 +379,48 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "0 0 24px",
     color: "#111111",
   },
+  pInListItem: {
+    margin: 0,
+  },
   ul: {
-    margin: "12px 0",
-    paddingLeft: 22,
+    // Keep spacing symmetric with paragraphs: prev->list == list->next == 24px.
+    margin: "0 0 24px",
+    // List items manage their own marker gutter.
+    paddingLeft: 24,
+    listStyle: "none",
   },
   ol: {
-    margin: "12px 0",
+    // Keep spacing symmetric with paragraphs: prev->list == list->next == 24px.
+    margin: "0 0 24px",
     paddingLeft: 22,
   },
-  li: {
+  liOrdered: {
     margin: "6px 0",
+  },
+  liUnordered: {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: 12,
+    margin: "6px 0",
+  },
+  liDash: {
+    color: "rgba(0,0,0,0.6)",
+    flex: "0 0 22px",
+    width: 22,
+    // Vertically center within the first line-height (24px).
+    height: 24,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  liDashIcon: {
+    display: "block",
+    color: "currentColor",
+  },
+  liBody: {
+    display: "block",
+    flex: "1 1 auto",
+    minWidth: 0,
   },
   blockquote: {
     margin: "0 0 24px",

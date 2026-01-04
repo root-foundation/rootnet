@@ -1,6 +1,5 @@
 ---
 title: ai & extreme outcomes
-previous: personal-token
 ---
 
 ## artificial intelligence

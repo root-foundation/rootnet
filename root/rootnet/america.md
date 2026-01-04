@@ -1,4 +1,9 @@
 ---
 title: "change starts at home"
-caption: ""
 ---
+
+rootnet requires the support of our legal, regulatory and political systems. this is not an idea that can be built in isolation. we cannot launch to the world on day one.
+
+our country is more divided than ever before as a consequence of perverse incentives. rootnet will create far better incentives that i believe will unite our country. 
+
+changing the world starts at home. with rootnet, we can make our country great.

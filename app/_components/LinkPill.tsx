@@ -8,52 +8,63 @@ export function LinkPill({
   children,
   ariaLabel,
   hasProfilePic,
+  isExternal,
 }: {
   href: string;
   children: React.ReactNode;
   ariaLabel?: string;
   hasProfilePic?: boolean;
+  isExternal?: boolean;
 }) {
   const [isHovered, setIsHovered] = React.useState(false);
   const [isFocused, setIsFocused] = React.useState(false);
   const [isPressed, setIsPressed] = React.useState(false);
   const lastInteractionRef = React.useRef<"mouse" | "keyboard" | null>(null);
 
+  const commonProps = {
+    "aria-label": ariaLabel,
+    style: {
+      ...styles.base,
+      ...(hasProfilePic ? styles.withProfilePic : styles.withoutProfilePic),
+      ...(isHovered ? styles.hover : null),
+      ...(isPressed ? styles.pressed : null),
+      ...(isFocused ? styles.focus : null),
+    } satisfies React.CSSProperties,
+    onMouseEnter: () => setIsHovered(true),
+    onMouseLeave: () => setIsHovered(false),
+    onMouseDown: () => {
+      lastInteractionRef.current = "mouse";
+      setIsPressed(true);
+    },
+    onMouseUp: () => setIsPressed(false),
+    onTouchStart: () => setIsPressed(true),
+    onTouchEnd: () => setIsPressed(false),
+    onKeyDown: (e: React.KeyboardEvent) => {
+      lastInteractionRef.current = "keyboard";
+      // Provide "click" affordance for keyboard activation.
+      if (e.key === "Enter" || e.key === " ") setIsPressed(true);
+    },
+    onKeyUp: () => setIsPressed(false),
+    onFocus: () => {
+      // Prevent the “click focus ring” while keeping a visible ring for keyboard navigation.
+      setIsFocused(lastInteractionRef.current === "keyboard");
+    },
+    onBlur: () => {
+      setIsFocused(false);
+      setIsPressed(false);
+    },
+  } as const;
+
+  if (isExternal) {
+    return (
+      <a href={href} target="_blank" rel="noreferrer noopener" {...commonProps}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      aria-label={ariaLabel}
-      style={{
-        ...styles.base,
-        ...(hasProfilePic ? styles.withProfilePic : styles.withoutProfilePic),
-        ...(isHovered ? styles.hover : null),
-        ...(isPressed ? styles.pressed : null),
-        ...(isFocused ? styles.focus : null),
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onMouseDown={() => {
-        lastInteractionRef.current = "mouse";
-        setIsPressed(true);
-      }}
-      onMouseUp={() => setIsPressed(false)}
-      onTouchStart={() => setIsPressed(true)}
-      onTouchEnd={() => setIsPressed(false)}
-      onKeyDown={(e) => {
-        lastInteractionRef.current = "keyboard";
-        // Provide "click" affordance for keyboard activation.
-        if (e.key === "Enter" || e.key === " ") setIsPressed(true);
-      }}
-      onKeyUp={() => setIsPressed(false)}
-      onFocus={() => {
-        // Prevent the “click focus ring” while keeping a visible ring for keyboard navigation.
-        setIsFocused(lastInteractionRef.current === "keyboard");
-      }}
-      onBlur={() => {
-        setIsFocused(false);
-        setIsPressed(false);
-      }}
-    >
+    <Link href={href} {...commonProps}>
       {children}
     </Link>
   );
@@ -66,6 +77,7 @@ const styles: Record<string, React.CSSProperties> = {
     // "Bleed" left/right so hover/press background extends beyond the content boundary,
     // while the text stays aligned with the parent container.
     width: "calc(100% + 24px)",
+    height: 32,
     marginLeft: -12,
     marginRight: -12,
     borderRadius: 8,
@@ -81,9 +93,10 @@ const styles: Record<string, React.CSSProperties> = {
       "background 140ms ease, border-color 140ms ease, box-shadow 140ms ease",
   },
   withoutProfilePic: {
-    padding: "8px 12px",
+    padding: "0px 12px",
   },
   withProfilePic: {
+    height: 40,
     padding: "8px 12px",
   },
   hover: {

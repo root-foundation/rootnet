@@ -159,27 +159,66 @@ function LinkList({
         const title =
           link.titleOverride || meta?.title || humanizeSlug(link.slug);
         const hasProfilePic = Boolean(meta?.profileSrc);
+        const href = link.href || `/${link.slug}`;
+        const isExternal = isExternalHref(href);
         return (
           <LinkPill
             key={`${idx}:${link.slug}`}
-            href={`/${link.slug}`}
+            href={href}
             hasProfilePic={hasProfilePic}
+            isExternal={isExternal}
           >
-            <span style={styles.linkPillInner}>
-              {meta?.profileSrc ? (
-                <img
-                  src={meta.profileSrc}
-                  alt=""
-                  aria-hidden
-                  style={styles.linkPillAvatar}
-                />
+            <span style={styles.linkPillContent}>
+              <span style={styles.linkPillInner}>
+                {meta?.profileSrc ? (
+                  <img
+                    src={meta.profileSrc}
+                    alt=""
+                    aria-hidden
+                    style={styles.linkPillAvatar}
+                  />
+                ) : null}
+                <span style={styles.linkPillTitle}>{title}</span>
+              </span>
+              {isExternal ? (
+                <span style={styles.externalIconWrap} aria-hidden="true">
+                  <ExternalArrowIcon />
+                </span>
               ) : null}
-              <span style={styles.linkPillTitle}>{title}</span>
             </span>
           </LinkPill>
         );
       })}
     </div>
+  );
+}
+
+function isExternalHref(href: string) {
+  return (
+    href.startsWith("http://") ||
+    href.startsWith("https://") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("tel:")
+  );
+}
+
+function ExternalArrowIcon() {
+  return (
+    <svg
+      data-testid="geist-icon"
+      height="14"
+      width="14"
+      viewBox="0 0 16 16"
+      strokeLinejoin="round"
+      style={styles.externalIcon}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.75001 2H5.00001V3.5H5.75001H11.4393L2.21968 12.7197L1.68935 13.25L2.75001 14.3107L3.28034 13.7803L12.4988 4.56182V10.25V11H13.9988V10.25V3C13.9988 2.44772 13.5511 2 12.9988 2H5.75001Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 }
 
@@ -261,10 +300,19 @@ const styles: Record<string, React.CSSProperties> = {
     flexDirection: "column",
     gap: 0,
   },
+  linkPillContent: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 12,
+    width: "100%",
+    minWidth: 0,
+  },
   linkPillInner: {
     display: "inline-flex",
     alignItems: "center",
     gap: 8,
+    minWidth: 0,
   },
   linkPillAvatar: {
     width: 30,
@@ -278,7 +326,26 @@ const styles: Record<string, React.CSSProperties> = {
   linkPillTitle: {
     display: "block",
     fontWeight: 460,
-    lineHeight: "1rem",
+    // Avoid clipping descenders (e.g. "g") while still matching the visual rhythm.
+    lineHeight: "1.25rem",
+    minWidth: 0,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+  externalIconWrap: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    height: 20,
+    width: 20,
+    color: "rgba(0, 0, 0, 0.2)",
+  },
+  externalIcon: {
+    display: "block",
+    color: "currentColor",
+    pointerEvents: "none",
   },
   storyGroups: {
     display: "flex",

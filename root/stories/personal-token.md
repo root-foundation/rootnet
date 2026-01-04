@@ -1,7 +1,6 @@
 ---
 title: personal token
 caption: incentivize help for life itself.
-next: extreme-outcomes
 ---
 
 ## we don't support explorations
