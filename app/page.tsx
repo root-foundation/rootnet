@@ -24,13 +24,25 @@ export default async function Home() {
         <header style={styles.hero}>
           <img src="/rootnet-logo.svg" alt="rootnet" style={styles.logo} />
 
-          <h1 style={styles.heroTitle}>
-            {config.heroTitleLines.map((line, idx) => (
-              <span key={`${idx}:${line}`} style={styles.heroTitleLine}>
-                {line}
-              </span>
-            ))}
-          </h1>
+          <div style={styles.heroHeadlineBlock}>
+            {config.heroKickerLines?.length ? (
+              <div style={styles.heroKicker}>
+                {config.heroKickerLines.map((line, idx) => (
+                  <span key={`${idx}:${line}`} style={styles.heroKickerLine}>
+                    {line}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+
+            <h1 style={styles.heroTitle}>
+              {config.heroTitleLines.map((line, idx) => (
+                <span key={`${idx}:${line}`} style={styles.heroTitleLine}>
+                  {line}
+                </span>
+              ))}
+            </h1>
+          </div>
 
           {config.heroCaptionLines?.length ? (
             <div style={styles.heroCaption}>
@@ -240,18 +252,32 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 40,
   },
   logo: {
-    width: 44,
-    height: 44,
+    width: 64,
+    height: 64,
     display: "block",
-    // Must be 2x the gap between hero title and hero caption.
     marginBottom: 48,
+  },
+  heroHeadlineBlock: {
+    marginBottom: 24,
+  },
+  heroKicker: {
+    margin: "0 0 8px",
+    fontSize: "clamp(26px, 4.6vw, 32px)",
+    lineHeight: "clamp(30px, 5.2vw, 38px)",
+    fontWeight: 360,
+    letterSpacing: "-0.04em",
+    color: "rgba(17, 17, 17, 0.5)",
+    pointerEvents: "auto",
+  },
+  heroKickerLine: {
+    display: "block",
   },
   heroTitle: {
     margin: 0,
-    fontSize: 42,
-    lineHeight: "48px",
-    fontWeight: 400,
-    letterSpacing: "-0.06em",
+    fontSize: "clamp(26px, 4.6vw, 32px)",
+    lineHeight: "clamp(30px, 5.2vw, 38px)",
+    fontWeight: 420,
+    letterSpacing: "-0.04em",
     color: "#111111",
     pointerEvents: "auto",
   },
@@ -259,12 +285,12 @@ const styles: Record<string, React.CSSProperties> = {
     display: "block",
   },
   heroCaption: {
-    marginTop: 24,
-    fontSize: 24,
-    lineHeight: "32px",
-    fontWeight: 400,
-    letterSpacing: "-0.03em",
-    color: "#5E5E5E",
+    marginTop: 0,
+    fontSize: "clamp(20px, 3.6vw, 24px)",
+    lineHeight: "clamp(26px, 4.4vw, 32px)",
+    fontWeight: 415,
+    letterSpacing: "-0.02em",
+    color: "rgba(17, 17, 17, 0.5)",
     pointerEvents: "auto",
   },
   heroCaptionLine: {

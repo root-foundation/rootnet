@@ -1,9 +1,11 @@
 {
-  "heroTitleLines": ["rootnet is an exploration"],
+  "heroKickerLines": ["rootnet is an exploration"],
+  "heroTitleLines": [
+    "to surface and amplify incentives",
+    "that align humanity with reality."
+  ],
   "heroCaptionLines": [
-    "to align our world to reality",
-    "through better incentives",
-    "from better instruments."
+    "so that we rise together in the age of ai. through financial primitives that unlock individual and collective potential."
   ],
   "sections": [
     {

@@ -23,6 +23,11 @@ export type LandingSection =
     };
 
 export type LandingConfig = {
+  /**
+   * Small, faded line(s) above the main headline.
+   * Example: "rootnet is an exploration"
+   */
+  heroKickerLines?: string[];
   heroTitleLines: string[];
   heroCaptionLines?: string[];
   sections: LandingSection[];
