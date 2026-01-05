@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
 import { PrevNextNav, type NavLink } from "@/app/_components/PrevNextNav";
+import { ReadingProgressHomeBadge } from "@/app/_components/ReadingProgressHomeBadge";
 
 type MarkdownArticleProps = {
   title: string;
@@ -30,10 +31,8 @@ export function MarkdownArticle({
 
   return (
     <main style={styles.page}>
-      <Link href="/" aria-label="Home" style={styles.logoLink}>
-        <img src="/rootnet-logo.svg" alt="rootnet" style={styles.logoImg} />
-      </Link>
-      <article style={styles.article}>
+      <ReadingProgressHomeBadge targetId="essay-article" />
+      <article id="essay-article" style={styles.article}>
         <header style={styles.header}>
           {profileSrc ? (
             <img
@@ -286,30 +285,6 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "192px 24px 96px",
     display: "flex",
     justifyContent: "center",
-  },
-  logoLink: {
-    position: "fixed",
-    top: 24,
-    left: 24,
-    zIndex: 10,
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    textDecoration: "none",
-    padding: "10px 12px",
-    borderRadius: 14,
-    background: "rgba(255, 255, 255, 0.72)",
-    border: "1px solid rgba(0, 0, 0, 0.06)",
-    boxShadow: "0 6px 18px rgba(0, 0, 0, 0.06)",
-    backdropFilter: "blur(10px)",
-    WebkitBackdropFilter: "blur(10px)",
-    opacity: 0.92,
-    transition: "opacity 120ms ease",
-  },
-  logoImg: {
-    height: 22,
-    width: "auto",
-    display: "block",
   },
   article: {
     width: "100%",
