@@ -1,8 +1,7 @@
 ---
 title: fixing our markets
 ---
-
-## value gap
+## our markets don't reflect what we value
 
 not even a sliver of who and what we actually value (and the degree to which we do) is reflected in our economic markets today.
 

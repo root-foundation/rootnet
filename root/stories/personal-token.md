@@ -2,40 +2,11 @@
 title: personal token
 caption: incentivize help for life itself.
 ---
+we can't incentivize help on explorations, and life itself, in the way we can for ideas (through companies). as a result, we can't explore as boldly and freely as we wish to. many people, and *all* of us, lose out.
 
-## we don't support explorations
+we need an instrument that enables us to share a piece of our success with others, that represents the value we will create through our lives, so that we can incentivize a profound kind of help and support that we can't today.
 
-we have a robust system to allocate talent, attention, and capital towards ideas - through _companies_.
-
-but we have nothing to allocate the same for explorations.
-
-as a result, we all lose out far more than we can imagine.
-
-let me show you this problem through my lens:
-
-## explorations are hard
-
-towards the end of 2023, i saw ai do something that shook my beliefs about our world. i dropped everything and started an open-ended exploration to understand how ai would change our world.
-
-this exploration has been the most difficult thing i've done.
-
-for almost a year i had no lasting sense of clarity about almost anything. i woke up every day confronting ambiguity. directions the felt promising quickly turned out to be dead ends. i had no answer to people who asked what i was doing with my life. i ran through my savings. i missed having a north star, a sense of direction, and being able to measure progress. i kept getting in my own way: i was regularly tempted to work on a much clearer idea i could go raise money for, rather than confront the unknown.
-
-then my mind settled. i got better at protecting my natural curiosity. but then i was intimidated by the sheer complexity of our world. to understand how ai would change our world, i realized i need to learn about many things. it became clear to me that i couldn't do this on my own.
-
-i need help. a lot of it.
-
-## i can't _incentivize_ help
-
-i asked and received help from many people. i'm grateful. but as a previous startup founder, i knew the kind of help i wanted: deeply committed, serious, intense. the kind of help that doing really difficult things requires.
-
-but i couldn't _incentivize_ help! i had no way to give people a stake in my success on this journey. i couldn't just start a "company" for a random exploration that i wasn't even sure would lead to a company anytime soon, if ever!
-
-it's sucked not being able to incentivize help - not just because i need the help to explore, but also because i genuinely miss deep collaboration with others. it's why i love startups. it's why i love competitive sports. exploring alone has felt lonely.
-
-but what if i could share with others a piece of my success with others to incentivize help?
-
-## personal token
+## sharing success
 
 let's design an instrument that lets me share my success with others, so that i can incentivize help on my exploration, in my journey, in my life itself.
 
@@ -45,11 +16,15 @@ and let's narrow it to the kind of wealth that is most valuable in our world - t
 
 my token represents the equities i will hold in companies. and my token needs shares (like companies) so that i can share my success with others.
 
+## permissionless
+
 but i can’t expose my future equity to my token shareholders - that would require permission from future cofounders and would get legally messy.
 
 so my token must be grounded in _capital gains_, not equity directly. this lets me share my upside with others without needing anyone’s permission.
 
 we can implement this grounding through dividends: capital gains from selling equity in a company is routed to shareholders proportional to the equity they hold.
+
+## does not confine
 
 importantly, my token doesn't confine me to any particular path in life. perhaps i decide i want to join a great startup instead of starting one myself. or maybe i decide to just invest in companies. since my token is grounded in capital gains, it doesn't matter _how_ i earn equity in companies, just that i do.
 
@@ -107,7 +82,11 @@ as long as a shareholder can help me create more value in the future, i will wan
 
 my cap table is sacred. when you are weird and unconventional, finding someone who believes in you is like finding a pool of water in a desert. it's one of the most beautiful feelings i've ever felt. my cap table represents such relationships. i will guard it.
 
-## enable, not oppress
+## people are not companies
+
+- key diff b/w company and person.
+- help, not own.
+- enable, not oppress
 
 people are not companies. i would not use this instrument if it oppressed me in any way.
 
@@ -115,11 +94,17 @@ my token must protect my freedom, not harm me, and help me maximize my success (
 
 let's design for this.
 
+my cap table is sacred. people shouldn’t be able to get on my cap table without my permission. 
+
+## mechanics
+
+let's design shareholding mechanics to reflect our principles.
+
 ---
 
 ### a) control
 
-my cap table is sacred. people shouldn’t be able to get on my cap table without my permission. secondary sales can’t happen without my approval. i don’t want strangers buying their way into my life. similarly, i can’t imagine ever “ipo-ing” my token.
+secondary sales can’t happen without my approval. i don’t want strangers buying their way into my life. similarly, i can’t imagine ever “ipo-ing” my token.
 
 ---
 
@@ -143,7 +128,7 @@ relationships should be built on continuous choice, not force.
 
 if someone becomes misaligned, harmful, or toxic, i retain the right to buy back their shares. this is not a normal mechanism - dilution is enough in almost all cases. buybacks exist only for extreme situations.
 
-my cap table is a living organism, it must be able to shed harmful cells to stay healthy.
+**my cap table is a living organism, it must be able to shed harmful cells to stay healthy.**
 
 ---
 
@@ -161,9 +146,9 @@ this puts a lot of control in the hands of the token owner. some may feel it's t
 
 but the long-term nature of this instrument helps prevent abuse through reputation.
 
-if i am unfair in any way to my shareholders, i will spook existing shareholders and also those who i want on my cap table. **by being unfair in any way, i make it impossible to achieve my potential.**
+**by being unfair in any way, i make it impossible to achieve my potential** - because i will spook existing shareholders and also future collaborators. 
 
-what is fair is decided by the market. if i do something i think is fair but the world thinks is not, i will naturally have to adapt, else i will no longer be able to incentivize the help i need.
+what is fair is decided by everyone. if i do something i think is fair but the market thinks is not, i will naturally have to adapt, else i will no longer be able to incentivize the help i need.
 
 this requires transparency. any edits made to my cap table will be public record. and i plan on being transparent about my thinking to give the world more information to determine how fair i am.
 
@@ -173,7 +158,7 @@ i need the help of a massive village to help me realize my potential.
 
 i predict (and hope) that i will hold less than a percent of equity in my own token by the time i die because it would reflect that i was able to find great collaborators in life.
 
-but, given how we've designed the personal token, i can't yet do this. let's fix this.
+but, given how we've designed the personal token, i can't yet do this because right now diluting myself too much comes at the cost of my growth.
 
 ## growth & decay
 
@@ -191,16 +176,31 @@ but this lead to a problem. reinvesting dividends works in companies because the
 
 which is why, at death i will have all of my holdings liquidated and all capital gains distributed to my shareholders. now, reinvesting dividends works.
 
-and we have one more problem... reputation works to prevent abuse when i am young and have most of my growth ahead of me. but what happens when i am old and decaying? that version of me doesn't have an incentive to not abuse because death is around the corner anyway. i could "reinvest dividends" into luxuries and not growth.
+and we have one more problem... reputation works to prevent abuse when i am young and have most of my growth ahead of me. but what happens when i am old and decaying? that version of me doesn't have an incentive to not abuse control because death is around the corner anyway. i could "reinvest dividends" into luxuries and not growth.
 
 which means shareholders should be able to vote on one thing: whether dividends can be reinvested. if they believe i'm in decay, they will naturally vote against reinvesting. if i don't agree with them, i can try to replace them. but if the world believes i'm in decay, i will find no one to replace them with. i can't escape reality.
+
+## overview
+
+so we've designed an instrument that enables a person to share success in their lives, so that they can incentivize a profound sort of help and support in life itself - before, and independent of, any specific idea they work on.
+
+and we've designed it in a way that preserves freedom, by putting most of the control in the hands of the individual so that they cannot be "owned", influenced in ways they don't want to be, or oppressed by others.
+
+feel free to check out [my token](/homan) to see this instrument grounded in reality.
+
+## legal
+
+the personal token is fundamentally a legal instrument. yes, we will need to build products and services that represent and enable us to engage with this instrument, but without legal legitimacy, this instrument will not work.
+
+there is still work to do to legally ground the personal token. consider helping.
+
+current spec: [PERSONAL TOKEN v0.1](/PERSONAL_TOKEN).
 
 ## a world that supports explorations
 
 with personal tokens, we can encourage bold explorations. the kind of explorations that would lead us to discover many great ideas. the kind of journeys that lead to profound breakthroughs.
 
-we are incredibly oppressed. most of us cannot follow our natural curiosities because we cannot incentivize the support needed to follow them. our world is full of einsteins, curies, kurosawas that are confined to spending just a couple hours a day following their hearts and the rest of their lives doi
-ng work they're not meant to do in order to make ends meet.
+we are incredibly oppressed. most of us cannot follow our natural curiosities because we cannot incentivize the support needed to follow them. our world is full of einsteins, curies, kurosawas that are confined to spending just a couple hours a day following their hearts and the rest of their lives doing work they're not meant to do in order to make ends meet.
 
 this is such a massive loss to all of us that we will only realize in hindsight once we enable people to explore freely and witness the brilliance of their discoveries.
 

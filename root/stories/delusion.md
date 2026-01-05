@@ -1,7 +1,7 @@
 ---
 title: we are deluded
 ---
-## i feel like i don't belong
+## our world is polarized
 
 our world is extreme. polarized. fragmented. we see extreme poles in everything: political ideologies, social platforms, economic policies, cultures.
 
@@ -13,9 +13,11 @@ on the other hand, we want to make sure that everyone prospers. it hurts all of 
 
 we are pushed to pick a side. right vs. left. individualism vs. collectivism. capitalism vs. communism. X vs. tiktok/ig.
 
-i feel like i don't belong on either side. nor do i belong in the middle because even the middle is operating on the same axis: that supporting one comes at the cost of the other - as if our world is a zero sum game. it is not.
+## but the axis itself is a lie
 
-i want both. i do not want to add any friction to individuals to shine and i want all of us to rise...
+but even choosing the middle ground is to acknowledge that individual and collective success are somehow at odds. that to help one we need to take from the other - through taxes, freedoms, etc. that our world is a zero-sum game.
+
+but this axis itself is a lie because there is no trade-off between the individual and collective success in reality.
 
 ## we are a single organism
 
@@ -27,4 +29,4 @@ we should want more great explorations, ideas, and discoveries! it benefits all 
 
 in reality there is no conflict between the individual and the collective. we are in this together. but we've created this conflict because our systems do not reflect that we are a single organism.
 
-let's design a financial system that is aligned with reality...
+what if we reflected this truth in our systems?

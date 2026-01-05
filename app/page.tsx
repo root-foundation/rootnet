@@ -35,7 +35,7 @@ export default async function Home() {
               </div>
             ) : null}
 
-            <h1 style={styles.heroTitle}>
+            <h1 style={styles.heroTitle} data-hero-title>
               {config.heroTitleLines.map((line, idx) => (
                 <span key={`${idx}:${line}`} style={styles.heroTitleLine}>
                   {line}

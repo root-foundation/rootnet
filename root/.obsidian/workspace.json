@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "40583a884c8cf354",
+        "id": "57307a40c1e71e2a",
         "type": "tabs",
         "children": [
           {
-            "id": "851be83cf9ec0ec2",
+            "id": "2f4cea12236658c3",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "stories/investing-personal-tokens.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "investing-personal-tokens"
             }
           }
         ]
@@ -90,6 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "stories/investing-personal-tokens.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for investing-personal-tokens"
             }
           },
           {
@@ -108,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "stories/investing-personal-tokens.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from investing-personal-tokens"
             }
           },
           {
@@ -150,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "stories/investing-personal-tokens.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of investing-personal-tokens"
             }
           }
         ]
@@ -176,16 +183,24 @@
       "bases:Create new base": false
     }
   },
-  "active": "851be83cf9ec0ec2",
+  "active": "2f4cea12236658c3",
   "lastOpenFiles": [
+    "stories/potential.md",
     "stories/delusion.md",
+    "stories/unity-incentives.md",
+    "stories/help.md",
+    "stories/personal-token.md",
+    "stories/psychosis.md",
+    "stories/progress.md",
     "stories/culture.md",
+    "stories/fixing-markets.md",
+    "stories/tokens-will-eat-world.md",
+    "stories/extreme-outcomes.md",
+    "stories/investing-personal-tokens.md",
     "instruments/PERSONAL_TOKEN.md",
     "landing.config.json",
     "instruments/NETWORK_TOKEN.md",
     "stories/growth.md",
-    "stories/fixing-markets.md",
-    "stories/unity-incentives.md",
     "stories/education.md",
     "stories/rising-above-transactional.md",
     "stories/ai-will-never-replace-us.md",
@@ -194,10 +209,6 @@
     "rootnet/exploration.md",
     "tokens/root.md",
     "rootnet/america.md",
-    "stories/psychosis.md",
-    "stories/uniting-world.md",
-    "stories/tokens-will-eat-world.md",
-    "stories/extreme-outcomes.md",
-    "stories/personal-token.md"
+    "stories/uniting-world.md"
   ]
 }

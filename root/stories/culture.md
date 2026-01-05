@@ -1,8 +1,7 @@
 ---
 title: better culture
 ---
-
-incentives shape culture.
+## incentives shape culture
 
 we can derive the new culture based on these incentives.
 
@@ -30,7 +29,7 @@ words, summits, conferences, agreements, handshakes don't lead to lasting unity.
 
 we would be incentivized to stand united against our shared problems to increase the value of humanity's token.
 
----
+## aligned with reality
 
 this culture is aligned with reality. reality contains many possibilities for us to solve our problems, that grounded optimism enables us to seek. i think pessimism is a delusion because it blinds us to the many possibilities that exist in reality.
 

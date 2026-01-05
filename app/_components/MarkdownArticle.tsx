@@ -316,10 +316,10 @@ const styles: Record<string, React.CSSProperties> = {
     margin: "24px 0 0",
     fontSize: 24,
     lineHeight: "32px",
-    fontWeight: 400,
-    color: "#111111",
+    fontWeight: 420,
+    color: "rgba(0, 0, 0, 0.6)",
     opacity: 0.6,
-    letterSpacing: "-0.02em",
+    letterSpacing: "-0.03em",
   },
   heroVideoWrap: {
     marginTop: 72,
@@ -328,8 +328,9 @@ const styles: Record<string, React.CSSProperties> = {
     width: "100%",
     fontSize: 16,
     lineHeight: "24px",
-    fontWeight: 400,
+    fontWeight: 420,
     color: "#111111",
+    letterSpacing: "-0.015em",
   },
   h2: {
     fontSize: 20,
@@ -347,7 +348,7 @@ const styles: Record<string, React.CSSProperties> = {
     // We assume H3s are preceded by a divider (hr), so the divider controls the top spacing.
     marginTop: 0,
     marginBottom: 24,
-    fontWeight: 550,
+    fontWeight: 580,
     color: "#111111",
   },
   p: {
@@ -370,13 +371,13 @@ const styles: Record<string, React.CSSProperties> = {
     paddingLeft: 22,
   },
   liOrdered: {
-    margin: "6px 0",
+    margin: "0px 0",
   },
   liUnordered: {
     display: "flex",
     alignItems: "flex-start",
     gap: 12,
-    margin: "6px 0",
+    margin: "0px 0",
   },
   liDash: {
     color: "rgba(0,0,0,0.6)",
@@ -404,11 +405,13 @@ const styles: Record<string, React.CSSProperties> = {
     background: "transparent",
     borderRadius: 0,
     color: "#111111",
-    opacity: 0.55,
+    opacity: 0.45,
+    letterSpacing: "-0.02em",
     fontStyle: "italic",
+    fontWeight: 420,
   },
   strong: {
-    fontWeight: 500,
+    fontWeight: 580,
   },
   a: {
     color: "#111111",

@@ -1,7 +1,7 @@
 {
   "heroKickerLines": ["rootnet is an exploration"],
   "heroTitleLines": [
-    "to surface and amplify incentives that align us with reality."
+    "to surface and amplify incentives that align humanity with reality."
   ],
   "heroCaptionLines": [
     "through financial primitives that unlock individual and collective potential. so that we rise together in the age of ai."
@@ -12,9 +12,10 @@
       "title": "story",
       "groups": [
         [
+          { "slug": "help" },
           { "slug": "personal-token" },
-          { "slug": "extreme-outcomes" },
-          { "slug": "tokens-will-eat-world" }
+          { "slug": "tokens-will-eat-world" },
+          { "slug": "investing-personal-tokens" }
         ],
         [
           { "slug": "delusion" },
@@ -25,7 +26,8 @@
           { "slug": "psychosis" },
           { "slug": "fixing-markets" },
           { "slug": "growth" },
-          { "slug": "culture" }
+          { "slug": "culture" },
+          { "slug": "progress" }
         ],
         [
           { "slug": "education" },
