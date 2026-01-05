@@ -280,6 +280,7 @@ const styles: Record<string, React.CSSProperties> = {
     letterSpacing: "-0.04em",
     color: "#111111",
     pointerEvents: "auto",
+    maxWidth: 500,
   },
   heroTitleLine: {
     display: "block",
