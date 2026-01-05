@@ -361,6 +361,7 @@ const styles: Record<string, React.CSSProperties> = {
   ul: {
     // Keep spacing symmetric with paragraphs: prev->list == list->next == 24px.
     margin: "0 0 24px",
+    marginTop: -16,
     // List items manage their own marker gutter.
     paddingLeft: 24,
     listStyle: "none",
@@ -368,6 +369,7 @@ const styles: Record<string, React.CSSProperties> = {
   ol: {
     // Keep spacing symmetric with paragraphs: prev->list == list->next == 24px.
     margin: "0 0 24px",
+    marginTop: -16,
     paddingLeft: 22,
   },
   liOrdered: {
