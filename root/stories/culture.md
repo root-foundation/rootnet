@@ -3,7 +3,11 @@ title: better culture
 ---
 ## incentives shape culture
 
-we can derive the new culture based on these incentives.
+we overestimate our ability to shape culture directly.
+
+at the end of the day, incentives win.
+
+throughout this story so far, we've designed new instruments that i believe represent truths about our world that we have ignored.
 
 ## grounded optimism
 

@@ -1,31 +1,62 @@
 ---
 title: fixing our education system
 ---
+## our education system is rotten 
 
-we need a systemic change at the level of incentives.
+we underestimate how bad our education system is because most of us are sorely outdated along with our education system. it is far worse than we think it is.
 
-we need a system that puts the burden of risk on the teacher, NOT the student.
+in this essay i'm not going to talk about *what* the best education is. i'm only going to discuss fixing the incentives - which should lead to great education emerging naturally.
 
-we need a system that ensures that teachers optimize for the long-term success of students.
+our education system is rotten at is core due to perverse incentives.
 
-we need a system that weeds out the many many bad teachers in our world today. they should not be given a chance to pollute our most valuable minds.
+- **burden of risk falls entirely on students**. if an education doesn't work out, it's students having to bear the burden of loans and lost time.
+- **outdated curriculums** with no incentive to improve.
+- **no accountability**. bad teachers aren't weeded out.
+- **no reward**. this makes it difficult for many of our greatest minds to dedicate themselves to teaching because it is such a financial sacrifice. most teachers are incredibly mediocre.
+- **short-term oriented**. as soon as a student goes through the system, the system doesn't care about them anymore because there isn't any more money to squeeze from them. attention shifts towards attracting and milking the incoming batch of students.
+- **no information**. a prospective student has little to no information about how good an education program is. how true are an institute's published stats on placements? will those stats hold up in the future? it is very difficult for students to make informed decisions.
+- **learning kept behind a paywall**. this hurts all of us more than we can imagine.
 
-we need a system that rewards teachers for doing one of the world's most valuable things. the best teachers should be extremely wealthy, so that many more of our greatest minds will choose to teach.
+the state of our education system should make our blood boil. we are letting our most precious minds be polluted by a rotting system that's incredibly out of touch with reality.
 
-we need an education system based on teachers investing in students' personal tokens.
+fixing education should be our top priority.
 
-teachers should pay students to teach them in exchange for equity in their success (personal tokens).
+## teachers should invest in students
 
-bad teachers would go broke fast (and i pray they will).
+**teachers should pay students** in exchange for equity in their [personal tokens](/personal-token) (i.e, success).
 
-great teachers should be able to raise massive funds to amplify their teaching to the world. because now the wider you can reach, the more great students you can attract to invest in. these incentives reward open-ness and not hiding knowledge from the world.
+firstly, this shifts the risk from students to teachers. if an education doesn't work out, the student does not go into debt.
 
-i want every teacher across every skill to operate the way paul graham did. paul graham was one of the first examples of this model of teaching. he taught the art of startups from his heart with the genuine desire to help others experience what he did. he didn't put his knowledge behind a stupid paywall. he could spread it wide and far because he was monetizing his impact in a much much more powerful way - by investing in the best of the people he reached with his knowledge.
+bad teachers would go broke fast. great teachers should be able to raise massive funds to amplify their teaching to the world. because the wider you can reach, the more great students you can attract to invest in. these incentives reward open-ness and not hiding knowledge from the world.
 
-but because we don't have personal tokens, paul grahams can only exist in the world of startups.
+the market helps determine which teachers are better by investing in them. those most successful in a particular field would signal which teachers they believe in by investing in them.
 
-an education system built on investing in students' personal tokens also gives students powerful information about how good a teacher actually is. 
+teaching is grounded in reality. a bad teacher - someone who doesn't meaningfully impact a student's outcomes - will be exposed by reality sooner or later. and even before being exposed by reality, the market will start to short them, providing a valuable signal for prospective students.
 
-people can study the investments teachers have made and how they worked out. teachers can't fake being great for long - they will be exposed sooner or later by the truth (which they can no longer hide).
+students will have a more information to choose the right teachers. they can study their cap tables and holdings to see who actually believes in them and how well their previous students have done.
 
-an education system based on investing in students' personal tokens is far better grounded in reality. the more teachers, the more capital invested, the more students, the better the system becomes at representing the truth about who's actually good at teaching and who's not.
+students will have more options. they will be able to pick teachers based on what they want to do in life. their cap tables will have many kinds of teachers for many kinds of skills - design, physical training, mental health, storytelling, etc.
+
+education becomes lifelong. teachers are incentivized to help students out whenever they need it because they hold equity in the student's long-term success.
+
+great teachers will be rewarded greatly. in this system, the best teachers will be some of the wealthiest people in our world (as they should be!). this will attract many great minds to dedicate their lives to shaping future generations. teaching should not be a sacrifice.
+
+teachers will be incentivized to not hold any knowledge behind a paywall because they have a much more powerful way to monetize. the more knowledge they share freely, the more (and better) students they will attract to invest in. this means that even for students that aren't invested in, the average quality of knowledge available to them will increase greatly.
+
+as the range of personal tokens [expands to cover all sorts of expressions](/tokens-will-eat-world) and fields, we will see such an education system expand to cover everything we do.
+
+## baseline education
+
+not all prospective students will be invested in. we will need a baseline education system as well. but even a default education system shouldn't be determined by a centralized authority - because that would quickly disconnect it from reality. we will need to figure out a system for this.
+
+but even for this group, the average quality of education will skyrocket because teachers have a strong incentive to not hide any knowledge behind a paywall.
+
+and secondly, with [universal basic equity](/uniting-world), we can achieve a world in which even such students will have an abundance of resources to learn with.
+
+## we need this now
+
+ai has already made [outcomes extreme](/tokens-will-eat-world) for knowledge work.
+
+we can see signs. many new grads are struggling to get jobs while there is nearly infinite demand for the best - because of extreme outcomes. (paradoxically, the market is simultaneously the best it has ever been, and the worst - for different groups).
+
+without shifting the burden of education away from students, we will quickly find many young people burdened by debt that they can't climb out of anytime soon. not because they don't have the capacity, but due to the stress of being in debt without a clear path out. this is deeply unfair. a tragedy for all of us.

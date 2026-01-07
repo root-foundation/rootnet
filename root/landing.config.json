@@ -25,9 +25,7 @@
         [
           { "slug": "psychosis" },
           { "slug": "fixing-markets" },
-          { "slug": "growth" },
-          { "slug": "culture" },
-          { "slug": "progress" }
+          { "slug": "growth" }
         ],
         [
           { "slug": "education" },
@@ -54,7 +52,6 @@
         { "slug": "america" },
         { "slug": "next-steps" },
         { "slug": "support" },
-        { "slug": "join" },
         {
           "slug": "source",
           "titleOverride": "source",
