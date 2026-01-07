@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "57307a40c1e71e2a",
+        "id": "0dafe54188eda649",
         "type": "tabs",
         "children": [
           {
-            "id": "e5789ecfdd7daa10",
+            "id": "593f8c5497657de6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/delusion.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "tokens-will-eat-world"
+              "title": "delusion"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/delusion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for tokens-will-eat-world"
+              "title": "Backlinks for delusion"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/delusion.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from tokens-will-eat-world"
+              "title": "Outgoing links from delusion"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/delusion.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tokens-will-eat-world"
+              "title": "Outline of delusion"
             }
           }
         ]
@@ -183,20 +183,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "e5789ecfdd7daa10",
+  "active": "593f8c5497657de6",
   "lastOpenFiles": [
+    "stories/uniting-world.md",
+    "stories/delusion.md",
+    "stories/tokens-will-eat-world.md",
     "stories/personal-token.md",
     "stories/help.md",
     "stories/growth.md",
     "stories/fixing-markets.md",
     "stories/investing-personal-tokens.md",
     "stories/potential.md",
-    "stories/delusion.md",
     "stories/unity-incentives.md",
     "stories/psychosis.md",
     "stories/progress.md",
     "stories/culture.md",
-    "stories/tokens-will-eat-world.md",
     "stories/extreme-outcomes.md",
     "instruments/PERSONAL_TOKEN.md",
     "landing.config.json",
@@ -208,7 +209,6 @@
     "rootnet/next-steps.md",
     "rootnet/exploration.md",
     "tokens/root.md",
-    "rootnet/america.md",
-    "stories/uniting-world.md"
+    "rootnet/america.md"
   ]
 }
