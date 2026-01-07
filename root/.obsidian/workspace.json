@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "54048421a41a0b51",
+        "id": "f0f4b85700bb6a6c",
         "type": "tabs",
         "children": [
           {
-            "id": "1f730b084a861530",
+            "id": "b94b429caebea6ef",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "rootnet/thanks.md",
+                "file": "instruments/PERSONAL_TOKEN.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "thanks"
+              "title": "PERSONAL_TOKEN"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "rootnet/thanks.md",
+                "file": "instruments/PERSONAL_TOKEN.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for thanks"
+              "title": "Backlinks for PERSONAL_TOKEN"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "rootnet/thanks.md",
+                "file": "instruments/PERSONAL_TOKEN.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from thanks"
+              "title": "Outgoing links from PERSONAL_TOKEN"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "rootnet/thanks.md",
+                "file": "instruments/PERSONAL_TOKEN.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of thanks"
+              "title": "Outline of PERSONAL_TOKEN"
             }
           }
         ]
@@ -183,10 +183,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "1f730b084a861530",
+  "active": "b94b429caebea6ef",
   "lastOpenFiles": [
-    "rootnet/support.md",
+    "prompt/AI_PROMPT.txt",
+    "prompt/USER_INSTRUCTIONS.txt",
+    "prompt",
     "rootnet/thanks.md",
+    "rootnet/support.md",
     "rootnet/join.md",
     "rootnet/next-steps.md",
     "rootnet/america.md",
@@ -210,7 +213,6 @@
     "landing.config.json",
     "instruments/NETWORK_TOKEN.md",
     "stories/rising-above-transactional.md",
-    "stories/ai-will-never-replace-us.md",
-    "tokens/root.md"
+    "stories/ai-will-never-replace-us.md"
   ]
 }
