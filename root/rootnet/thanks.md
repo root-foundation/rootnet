@@ -12,4 +12,6 @@ i also want to thank to my brothers:
 
 [shiv](https://scholar.google.com/citations?user=WNUGEccAAAAJ) - this idea emerged through many discussions we've had for over a year now. at this point it's not really possible to say who contributed what. this collaboration is a testament that we can see and do more *together* than we can alone. that working together is not just summing the parts, but much more.
 
-i also want to thank the many who engaged with me and this idea over the months.
+i also want to thank all those who have supported me on this crazy journey. and the many who engaged with me and this idea over the months.
+
+thanks.
