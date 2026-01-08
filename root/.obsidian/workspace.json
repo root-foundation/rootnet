@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "instruments/PERSONAL_TOKEN.md",
+                "file": "tokens/homan.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "PERSONAL_TOKEN"
+              "title": "homan"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 237.5
   },
   "right": {
     "id": "b65bb987b2d5cc80",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "instruments/PERSONAL_TOKEN.md",
+                "file": "tokens/homan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for PERSONAL_TOKEN"
+              "title": "Backlinks for homan"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "instruments/PERSONAL_TOKEN.md",
+                "file": "tokens/homan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from PERSONAL_TOKEN"
+              "title": "Outgoing links from homan"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "instruments/PERSONAL_TOKEN.md",
+                "file": "tokens/homan.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of PERSONAL_TOKEN"
+              "title": "Outline of homan"
             }
           }
         ]
@@ -185,6 +185,7 @@
   },
   "active": "b94b429caebea6ef",
   "lastOpenFiles": [
+    "instruments/PERSONAL_TOKEN.md",
     "prompt/AI_PROMPT.txt",
     "prompt/USER_INSTRUCTIONS.txt",
     "prompt",
@@ -209,7 +210,6 @@
     "stories/unity-incentives.md",
     "stories/progress.md",
     "stories/extreme-outcomes.md",
-    "instruments/PERSONAL_TOKEN.md",
     "landing.config.json",
     "instruments/NETWORK_TOKEN.md",
     "stories/rising-above-transactional.md",
