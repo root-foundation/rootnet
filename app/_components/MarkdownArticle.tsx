@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
 import { PrevNextNav, type NavLink } from "@/app/_components/PrevNextNav";
 import { ReadingProgressHomeBadge } from "@/app/_components/ReadingProgressHomeBadge";
+import { ArticleToc } from "@/app/_components/ArticleToc";
 
 type MarkdownArticleProps = {
   title: string;
@@ -64,24 +65,11 @@ export function MarkdownArticle({
   );
 
   const tocEl = showToc ? (
-    <nav
-      aria-label="Table of contents"
+    <ArticleToc
+      items={tocItems}
       className="rn-article-toc"
       style={styles.toc}
-    >
-      <div style={styles.tocInner}>
-        {tocItems.map((item) => (
-          <a
-            key={item.id}
-            href={`#${item.id}`}
-            className="rn-article-tocLink"
-            style={styles.tocLink}
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
-    </nav>
+    />
   ) : null;
 
   return (
@@ -502,21 +490,6 @@ const styles: Record<string, React.CSSProperties> = {
     display: "none",
     gridColumn: 1,
     gridRow: 2,
-  },
-  tocInner: {
-    // Align first TOC item with the first rendered H2 text (which has a top margin).
-    paddingTop: H2_MARGIN_TOP_PX + TOC_ALIGN_TO_FIRST_H2_PX,
-  },
-  tocLink: {
-    display: "block",
-    fontSize: 14,
-    lineHeight: "20px",
-    fontWeight: 400,
-    color: "#111111",
-    opacity: 0.4,
-    textDecoration: "none",
-    marginBottom: 10,
-    letterSpacing: "-0.01em",
   },
   article: {
     width: "100%",
