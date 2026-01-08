@@ -21,9 +21,13 @@ the state of our education system should make our blood boil. we are letting our
 
 fixing education should be our top priority.
 
+---
+
+to fix these incentives, we need a new way to allocate risk and reward - one that aligns teachers with students over the long term instead of extracting value upfront. a [personal token](/PERSONAL_TOKEN) is an instrument that allows an individual to share a small portion of their future upside in order to incentivize meaningful help today. that upside is grounded in future **capital gains** the person goes on to earn from **equity and equity-like holdings** - not wages, not income, and not labor. rather than relying on debt or tuition, others can earn equity in a person’s long-term success by contributing time, skill, capital, or belief. personal tokens are not ownership over a person, nor claims on their labor; they are upside-only instruments tied to future value creation. if this is your first encounter with the idea, you can read a deeper explanation [here](/help), but the rest of this essay relies only on this intuition.
+
 ## teachers should invest in students
 
-**teachers should pay students** in exchange for equity in their [personal tokens](/personal-token) (i.e, success).
+**teachers should pay students** in exchange for equity in their [personal tokens](/personal-token) (i.e, their  success).
 
 firstly, this shifts the risk from students to teachers. if an education doesn't work out, the student does not go into debt.
 

@@ -5,15 +5,13 @@ toc: true
 ---
 ## Context
 
-Modern economic systems are excellent at allocating talent, attention, and capital toward **ideas**—primarily through companies. However, they provide no comparable mechanism to support **open-ended explorations** or a person’s life trajectory before a concrete idea exists.
+Modern economic systems are excellent at allocating talent, attention, and capital toward **ideas** - primarily through companies. However, they provide no comparable mechanism to support **open-ended explorations** or a person’s life trajectory before a concrete idea exists, and across everything they ever work on.
 
 As a result, many potentially world-changing explorations never happen, not due to lack of ability or conviction, but because individuals cannot incentivize the deep, long-term help such journeys require.
 
-A **Personal Token** is designed to fix this. It allows an individual to share a portion of their future value creation in order to attract meaningful collaboration—_without_ starting a company, selling equity in themselves, or constraining their freedom.
+A **Personal Token** is designed to fix this. It allows an individual to share a portion of their future value creation in order to attract meaningful collaboration - without starting a company or constraining their freedom.
 
-This document specifies the **mechanics** of the Personal Token. For the full motivation, philosophy, and broader vision, see:
-
-> **Read the full essay → [link to story]**
+This document specifies the **mechanics** of the Personal Token. For the full motivation, philosophy, and broader vision - [read the story](/help).
 
 ---
 

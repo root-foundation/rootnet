@@ -23,10 +23,10 @@ we cannot separate the individual from the collective. we are all part of the sa
 
 every single idea we work on is built on top of millions of others. every expression enables exponentially more expressions. where is the notion of individual achievement in our world? from the language i'm writing in, to the tools i'm using, to the internet you're receiving this through, to the many works of art that have shaped me, what am i but a reflection of the collective organism? how separate are we really?
 
-we want more great explorations, ideas, and discoveries! it benefits all of us. from penicillin to the internet to democracy to everything that we value involved individual brilliance. and we also want to democratize opportunity so that everyone can shine - by giving everyone access to an abundance of resources.
+we want more great explorations, ideas, and discoveries! it benefits all of us. from penicillin to the internet to democracy to everything that we value involved individual brilliance. and we also want everyone to shine - by giving everyone access to an abundance of resources.
 
-these desires are not at odds because we are in this together.
+these desires are not at odds. they are actually the same thing.
 
-but we've created this conflict because our systems don't reflect that we are in this together. our financial, political, social systems all pit the individual against the collective. 
+but we've created a conflict because our systems don't reflect that we are in this together. our financial, political, social systems all pit the individual against the collective - designed to take away freedom and wealth from the individual in order to enable collective prosperity as if our world is a zero sum game.
 
-what if we reflected the truth in our systems?
+what if we built a system that reflected the truth that we are in this together, that **our world is not zero sum, but rather positive sum**?
