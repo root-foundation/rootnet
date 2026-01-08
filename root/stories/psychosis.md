@@ -1,7 +1,6 @@
 ---
 title: accelerating psychosis
 ---
-
 ## accelerating psychosis
 
 ai accelerates the rate of change of our world, exponentially. as a result, all of our systems are rapidly losing touch with reality. 

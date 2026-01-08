@@ -2,7 +2,6 @@
 title: uniting our world
 caption: what would our world look like if everyone had equity in each other's success?
 ---
-
 ## token for humanity
 
 let's say we have a token that represents humanity's collective potential.
@@ -54,3 +53,11 @@ individual and collective prosperity become intertwined.
 in such a world, we will celebrate any effort that increases the value of humanity's token. scientific breakthroughs. medical breakthroughs. improved safety. art that inspires hope that is grounded in reality.
 
 **in such a world, we would be on the same side.**
+
+## unity through incentives
+
+incentives > words.
+
+no number of summits, conferences, treaties, etc. will lead to lasting peace and successful collaboration to fix our shared global challenges (like global warming).
+
+this system gives creates strong financial incentives to be united and fight against our shared problems together - which is the only way we can ever solve them.
