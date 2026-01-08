@@ -33,7 +33,7 @@ how?
 
 firstly, our baseline will rise significantly as each person will hold equity in the potential of all of humanity through shares in humanity's token. as long as we believe tomorrow will be better than today, these shares will be worth a lot, and appreciate a lot.
 
-we will want those with the greatest potential to reinvest their personal token dividends back into themselves to further fuel their growth - which directly grows our own wealth (through our equity in humanity's token that holds equity in them). 
+we will want those with the greatest potential to [reinvest their personal token dividends](/personal-token#reinvesting-dividends) back into themselves to further fuel their growth - which directly grows our own wealth (through our equity in humanity's token that holds equity in them). 
 
 which means that as long as the individual has potential to create value, the individual will not pay taxes of any kind. importantly, this isn't "redistribution" of wealth. this is an entirely different mechanism. individuals don't have to "give back" to society - society grows with them by holding equity in their success.
 
