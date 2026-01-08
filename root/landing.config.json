@@ -8,6 +8,11 @@
   ],
   "sections": [
     {
+      "kind": "list",
+      "title": "instruments",
+      "links": [{ "slug": "PERSONAL_TOKEN" }, { "slug": "NETWORK_TOKEN" }]
+    },
+    {
       "kind": "story",
       "title": "story",
       "groups": [
@@ -36,17 +41,12 @@
     },
     {
       "kind": "list",
-      "title": "instruments",
-      "links": [{ "slug": "PERSONAL_TOKEN" }, { "slug": "NETWORK_TOKEN" }]
-    },
-    {
-      "kind": "list",
       "title": "tokens",
-      "links": [{ "slug": "root" }]
+      "links": [{ "slug": "root" }, { "slug": "homan" }]
     },
     {
       "kind": "list",
-      "title": "rootnet",
+      "title": "about",
       "links": [
         { "slug": "exploration" },
         { "slug": "america" },

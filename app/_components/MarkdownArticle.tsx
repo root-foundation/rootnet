@@ -28,6 +28,8 @@ export function MarkdownArticle({
 }: MarkdownArticleProps) {
   const heroVideoEmbedUrl = video ? getYouTubeEmbedUrl(video) : null;
   const normalizedCaption = normalizeOptionalCaption(caption);
+  const headingIdSlugger = createHeadingIdSlugger();
+  const titleId = headingIdSlugger(title);
 
   return (
     <main style={styles.page}>
@@ -42,7 +44,9 @@ export function MarkdownArticle({
               style={styles.profileImg}
             />
           ) : null}
-          <h1 style={styles.h1}>{title}</h1>
+          <h1 id={titleId} style={styles.h1}>
+            {title}
+          </h1>
           {normalizedCaption ? (
             <p style={styles.caption}>{normalizedCaption}</p>
           ) : null}
@@ -67,17 +71,56 @@ export function MarkdownArticle({
             components={{
               // Rule: top heading is the page title (from frontmatter/filename).
               // Any markdown H1 inside the body should render as an H2.
-              h1: ({ node: _node, ...props }) => (
-                <h2 style={styles.h2} {...props} />
-              ),
+              h1: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h2 style={styles.h2} {...props} id={id}>
+                    {children}
+                  </h2>
+                );
+              },
               // Rule: other headings are H2s.
-              h2: ({ node: _node, ...props }) => (
-                <h2 style={styles.h2} {...props} />
-              ),
+              h2: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h2 style={styles.h2} {...props} id={id}>
+                    {children}
+                  </h2>
+                );
+              },
               // Rule: H3 should look like body text, just 500 weight.
-              h3: ({ node: _node, ...props }) => (
-                <p style={styles.h3AsBody} {...props} />
-              ),
+              h3: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h3 style={styles.h3AsBody} {...props} id={id}>
+                    {children}
+                  </h3>
+                );
+              },
+              h4: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h4 style={styles.h3AsBody} {...props} id={id}>
+                    {children}
+                  </h4>
+                );
+              },
+              h5: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h5 style={styles.h3AsBody} {...props} id={id}>
+                    {children}
+                  </h5>
+                );
+              },
+              h6: ({ node: _node, children, ...props }) => {
+                const id = headingIdSlugger(getTextFromReactNode(children));
+                return (
+                  <h6 style={styles.h3AsBody} {...props} id={id}>
+                    {children}
+                  </h6>
+                );
+              },
               p: ({ node, ...props }) => {
                 const standaloneUrl = getStandaloneUrlFromParagraphNode(node);
                 const embedUrl = standaloneUrl
@@ -275,6 +318,55 @@ function normalizeOptionalCaption(input?: string): string | null {
     input.replace(/[\s\u200B\u200C\u200D\uFEFF]/g, "").length > 0;
   if (!hasVisibleChars) return null;
   return input.trim();
+}
+
+function getTextFromReactNode(node: React.ReactNode): string {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(getTextFromReactNode).join("");
+  if (React.isValidElement(node)) {
+    const el = node as React.ReactElement<{ children?: React.ReactNode }>;
+    return getTextFromReactNode(el.props.children);
+  }
+  return "";
+}
+
+function createHeadingIdSlugger(): (rawHeadingText: string) => string {
+  const counts = new Map<string, number>();
+
+  return (rawHeadingText: string) => {
+    const base = slugifyHeadingText(rawHeadingText);
+    const prev = counts.get(base) ?? 0;
+    const next = prev + 1;
+    counts.set(base, next);
+    if (next === 1) return base;
+    return `${base}-${next}`;
+  };
+}
+
+function slugifyHeadingText(input: string): string {
+  // "Common sense" slug rules:
+  // - lowercase
+  // - remove punctuation
+  // - spaces -> dashes
+  // - collapse multiple dashes
+  // - keep ASCII letters/numbers (strip diacritics)
+  const normalized = String(input ?? "")
+    .trim()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, ""); // strip combining marks
+
+  const lower = normalized.toLowerCase().replace(/&/g, " and ");
+
+  // Keep only alphanumerics, whitespace, and dashes/underscores (underscores become dashes).
+  const cleaned = lower
+    .replace(/['’]/g, "") // drop apostrophes
+    .replace(/[^a-z0-9\s_-]/g, " ")
+    .replace(/[_\s]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return cleaned || "section";
 }
 
 const styles: Record<string, React.CSSProperties> = {
