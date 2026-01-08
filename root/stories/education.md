@@ -67,4 +67,4 @@ without shifting the burden of education away from students, we will quickly fin
 
 ---
 
-> thanks to [deepak](https://www.debugjois.dev/) for feedback on an early draft.
+> thanks to [deepak](https://www.debugjois.dev/) for feedback on drafts.
