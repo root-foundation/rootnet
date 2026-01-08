@@ -79,15 +79,14 @@ export function ReadingProgressHomeBadge({
 
   // Simple: a circular avatar with an SVG stroke ring around it.
   // The padding ensures the ring can never bleed into the avatar area.
-  const previousOuterSize = 52;
-  const scale = 0.75; // 0.75x the previous radius => 0.75x diameter too
-  const ringThickness = 2.25; // circumference thickness
+  // IMPORTANT: keep all geometry on whole pixels to avoid subpixel rounding that can
+  // make the inner icon look slightly off-center in a perfect circle.
+  // (Odd sizes -> center at .5px; fractional stroke widths -> fractional radii.)
+  const ringThickness = 2; // integer for crisp rendering
   const ringGap = 4;
   const padding = ringThickness + ringGap; // guarantees no overlap
-  const baseOuterSize = Math.round(previousOuterSize * scale);
-  const baseAvatarSize = baseOuterSize - padding * 2;
-  const avatarSize = Math.round(baseAvatarSize * 1.5);
-  const outerSize = Math.round(avatarSize + padding * 2);
+  const avatarSize = 40; // even => integer center alignment
+  const outerSize = avatarSize + padding * 2; // even => integer center alignment
 
   const r = outerSize / 2 - ringThickness / 2;
   const c = 2 * Math.PI * r;
@@ -177,7 +176,9 @@ const styles: Record<string, React.CSSProperties> = {
     width: "100%",
     height: "100%",
     display: "block",
-    objectFit: "cover",
+    objectFit: "contain",
+    objectPosition: "center",
+    transform: "translate(1px, 1px)",
     borderRadius: 999,
   },
 };
