@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "tokens/root.md",
+                "file": "instruments/PERSONAL_TOKEN.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "root"
+              "title": "PERSONAL_TOKEN"
+            }
+          },
+          {
+            "id": "c062428b34009787",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "stories/personal-token.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "personal-token"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -94,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tokens/root.md",
+                "file": "stories/personal-token.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for root"
+              "title": "Backlinks for personal-token"
             }
           },
           {
@@ -113,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tokens/root.md",
+                "file": "stories/personal-token.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from root"
+              "title": "Outgoing links from personal-token"
             }
           },
           {
@@ -156,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tokens/root.md",
+                "file": "stories/personal-token.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of root"
+              "title": "Outline of personal-token"
             }
           }
         ]
@@ -183,8 +198,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "58ced2fe23ec78fa",
+  "active": "c062428b34009787",
   "lastOpenFiles": [
+    "instruments/PERSONAL_TOKEN.md",
+    "tokens/root.md",
     "tokens/shiv.md",
     "about/thanks.md",
     "about/support.md",
@@ -193,7 +210,6 @@
     "about/america.md",
     "about",
     "tokens/homan.md",
-    "instruments/PERSONAL_TOKEN.md",
     "prompt/AI_PROMPT.txt",
     "prompt/USER_INSTRUCTIONS.txt",
     "prompt",
@@ -214,7 +230,6 @@
     "stories/personal-token.md",
     "stories/help.md",
     "stories/investing-personal-tokens.md",
-    "stories/potential.md",
     "landing.config.json"
   ]
 }

@@ -12,6 +12,7 @@ export type ContentPage = {
   caption?: string;
   video?: string;
   profileSrc?: string;
+  toc?: boolean;
   previousSlug?: string;
   nextSlug?: string;
   markdown: string;
@@ -306,6 +307,7 @@ async function getContentPageBySlugUncached(
   const frontmatterCaption = parsed.data?.caption;
   const frontmatterVideo = parsed.data?.video;
   const frontmatterProfileSrc = parsed.data?.profileSrc;
+  const frontmatterToc = parsed.data?.toc;
   const title =
     (typeof frontmatterTitle === "string" && frontmatterTitle.trim()) ||
     getTitleFromMarkdownContent(parsed.content) ||
@@ -322,6 +324,7 @@ async function getContentPageBySlugUncached(
     typeof frontmatterProfileSrc === "string" && frontmatterProfileSrc.trim()
       ? frontmatterProfileSrc.trim()
       : undefined;
+  const toc = frontmatterToc === true ? true : undefined;
   const { previousSlug, nextSlug } = await getPrevNextSlugsFromConfig(slug);
 
   return {
@@ -329,6 +332,7 @@ async function getContentPageBySlugUncached(
     caption,
     video,
     profileSrc,
+    toc,
     previousSlug,
     nextSlug,
     markdown: parsed.content.trimStart(),

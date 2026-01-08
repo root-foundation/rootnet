@@ -1,7 +1,11 @@
 ---
 title: personal token
 caption: incentivize help for life itself.
+toc: true
 ---
+
+## an instrument
+
 we can't incentivize help for explorations, and for life itself, in the way we can for ideas (through companies).
 
 we need an instrument that enables us to share a piece of our success with others, that represents the value we will create through our lives, so that we can incentivize a profound kind of help and support for our explorations, for our lives.

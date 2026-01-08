@@ -12,14 +12,20 @@ export function ReadingProgressHomeBadge({
 }) {
   const [progress, setProgress] = React.useState(0);
   const rafRef = React.useRef<number | null>(null);
+  const resizeTimeoutRef = React.useRef<number | null>(null);
+  const targetElRef = React.useRef<HTMLElement | null>(null);
 
   const updateProgress = React.useCallback(() => {
-    const el = document.getElementById(targetId);
+    const el =
+      targetElRef.current ??
+      (document.getElementById(targetId) as HTMLElement | null);
+    targetElRef.current = el;
 
     if (!el) {
       const doc = document.documentElement;
       const max = Math.max(1, doc.scrollHeight - window.innerHeight);
-      setProgress(Math.min(1, Math.max(0, window.scrollY / max)));
+      const next = Math.min(1, Math.max(0, window.scrollY / max));
+      setProgress((prev) => (Math.abs(prev - next) < 0.002 ? prev : next));
       return;
     }
 
@@ -32,11 +38,12 @@ export function ReadingProgressHomeBadge({
     const end = elTop + Math.max(1, elHeight - viewportHeight);
 
     const raw = (window.scrollY - start) / (end - start);
-    setProgress(Math.min(1, Math.max(0, raw)));
+    const next = Math.min(1, Math.max(0, raw));
+    setProgress((prev) => (Math.abs(prev - next) < 0.002 ? prev : next));
   }, [targetId]);
 
   React.useEffect(() => {
-    const onScrollOrResize = () => {
+    const onScroll = () => {
       if (rafRef.current != null) return;
       rafRef.current = window.requestAnimationFrame(() => {
         rafRef.current = null;
@@ -44,14 +51,29 @@ export function ReadingProgressHomeBadge({
       });
     };
 
+    const onResize = () => {
+      // Resizing triggers expensive synchronous layout; debounce so dragging the
+      // window size doesn't constantly force layout + React updates.
+      if (resizeTimeoutRef.current != null) {
+        window.clearTimeout(resizeTimeoutRef.current);
+      }
+      resizeTimeoutRef.current = window.setTimeout(() => {
+        resizeTimeoutRef.current = null;
+        updateProgress();
+      }, 120);
+    };
+
     updateProgress();
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
 
     return () => {
       if (rafRef.current != null) window.cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
+      if (resizeTimeoutRef.current != null) {
+        window.clearTimeout(resizeTimeoutRef.current);
+      }
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, [updateProgress]);
 

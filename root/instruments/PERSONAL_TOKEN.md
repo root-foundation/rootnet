@@ -1,8 +1,8 @@
 ---
 title: PERSONAL TOKEN v0.1
 caption: A legal-financial instrument that enables people to incentivize help across their lives.
+toc: true
 ---
-
 ## Context
 
 Modern economic systems are excellent at allocating talent, attention, and capital toward **ideas**—primarily through companies. However, they provide no comparable mechanism to support **open-ended explorations** or a person’s life trajectory before a concrete idea exists.

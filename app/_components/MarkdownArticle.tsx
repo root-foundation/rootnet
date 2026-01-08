@@ -14,6 +14,7 @@ type MarkdownArticleProps = {
   profileSrc?: string;
   previous?: NavLink | null;
   next?: NavLink | null;
+  toc?: boolean;
   markdown: string;
 };
 
@@ -24,48 +25,77 @@ export function MarkdownArticle({
   profileSrc,
   previous,
   next,
+  toc,
   markdown,
 }: MarkdownArticleProps) {
   const heroVideoEmbedUrl = video ? getYouTubeEmbedUrl(video) : null;
   const normalizedCaption = normalizeOptionalCaption(caption);
   const headingIdSlugger = createHeadingIdSlugger();
   const titleId = headingIdSlugger(title);
+  const tocItems =
+    toc === true ? getTocItemsFromMarkdown({ title, markdown }) : [];
+  const showToc = toc === true && tocItems.length > 0;
+
+  const headerEl = (
+    <header style={showToc ? styles.headerWithToc : styles.header}>
+      {profileSrc ? (
+        <img src={profileSrc} alt="" aria-hidden style={styles.profileImg} />
+      ) : null}
+      <h1 id={titleId} style={styles.h1}>
+        {title}
+      </h1>
+      {normalizedCaption ? (
+        <p style={styles.caption}>{normalizedCaption}</p>
+      ) : null}
+      {heroVideoEmbedUrl ? (
+        <div style={styles.heroVideoWrap}>
+          <div style={styles.youtubeFrame}>
+            <iframe
+              src={heroVideoEmbedUrl}
+              title="YouTube video"
+              style={styles.youtubeIframe}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      ) : null}
+    </header>
+  );
+
+  const tocEl = showToc ? (
+    <nav
+      aria-label="Table of contents"
+      className="rn-article-toc"
+      style={styles.toc}
+    >
+      <div style={styles.tocInner}>
+        {tocItems.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className="rn-article-tocLink"
+            style={styles.tocLink}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  ) : null;
 
   return (
     <main style={styles.page}>
       <ReadingProgressHomeBadge targetId="essay-article" />
-      <article id="essay-article" style={styles.article}>
-        <header style={styles.header}>
-          {profileSrc ? (
-            <img
-              src={profileSrc}
-              alt=""
-              aria-hidden
-              style={styles.profileImg}
-            />
-          ) : null}
-          <h1 id={titleId} style={styles.h1}>
-            {title}
-          </h1>
-          {normalizedCaption ? (
-            <p style={styles.caption}>{normalizedCaption}</p>
-          ) : null}
-          {heroVideoEmbedUrl ? (
-            <div style={styles.heroVideoWrap}>
-              <div style={styles.youtubeFrame}>
-                <iframe
-                  src={heroVideoEmbedUrl}
-                  title="YouTube video"
-                  style={styles.youtubeIframe}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          ) : null}
-        </header>
+      <article
+        id="essay-article"
+        className={showToc ? "rn-article-layout" : undefined}
+        style={showToc ? styles.articleWithToc : styles.article}
+      >
+        {headerEl}
+        {tocEl}
 
-        <div style={styles.content}>
+        <div style={showToc ? styles.contentWithToc : styles.content}>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
@@ -252,6 +282,83 @@ export function MarkdownArticle({
   );
 }
 
+type TocItem = { id: string; label: string };
+
+function getTocItemsFromMarkdown(input: {
+  title: string;
+  markdown: string;
+}): TocItem[] {
+  const { title, markdown } = input;
+  const headingIdSlugger = createHeadingIdSlugger();
+
+  // Keep the slugger in sync with rendered IDs.
+  // The article title reserves the first slug.
+  headingIdSlugger(title);
+
+  const out: TocItem[] = [];
+  const headings = extractMarkdownAtxHeadings(markdown);
+
+  for (const h of headings) {
+    const label = stripInlineMarkdown(h.text).trim();
+    if (!label) continue;
+    const id = headingIdSlugger(label);
+    if (h.depth === 2) out.push({ id, label });
+  }
+
+  return out;
+}
+
+function extractMarkdownAtxHeadings(
+  markdown: string
+): Array<{ depth: number; text: string }> {
+  const out: Array<{ depth: number; text: string }> = [];
+  const lines = String(markdown ?? "").split(/\r?\n/);
+
+  // Ignore headings inside fenced code blocks.
+  let inFence: false | { marker: "```" | "~~~" } = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    if (trimmed.startsWith("```")) {
+      if (!inFence) inFence = { marker: "```" };
+      else if (inFence.marker === "```") inFence = false;
+      continue;
+    }
+    if (trimmed.startsWith("~~~")) {
+      if (!inFence) inFence = { marker: "~~~" };
+      else if (inFence.marker === "~~~") inFence = false;
+      continue;
+    }
+    if (inFence) continue;
+
+    // ATX heading: "#", "##", ... "######"
+    const m = /^(#{1,6})\s+(.+?)\s*$/.exec(line);
+    if (!m?.[1] || !m?.[2]) continue;
+
+    const depth = m[1].length;
+    const withoutClosingHashes = m[2].replace(/\s+#+\s*$/, "").trim();
+    if (!withoutClosingHashes) continue;
+    out.push({ depth, text: withoutClosingHashes });
+  }
+
+  return out;
+}
+
+function stripInlineMarkdown(input: string): string {
+  // Aim: approximate the visible heading text that react-markdown will render.
+  // Keep this intentionally simple.
+  return String(input ?? "")
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, "$1") // images -> alt text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // links -> label
+    .replace(/`([^`]+)`/g, "$1") // inline code
+    .replace(/\*\*([^*]+)\*\*/g, "$1") // bold
+    .replace(/\*([^*]+)\*/g, "$1") // italics
+    .replace(/__([^_]+)__/g, "$1") // bold
+    .replace(/_([^_]+)_/g, "$1") // italics
+    .replace(/~~([^~]+)~~/g, "$1"); // strikethrough
+}
+
 function DashIcon() {
   return (
     <svg
@@ -369,6 +476,11 @@ function slugifyHeadingText(input: string): string {
   return cleaned || "section";
 }
 
+const H2_MARGIN_TOP_PX = 48;
+// Visual alignment tweak: the first H2's margin/baseline renders slightly lower
+// than the TOC list start, so we nudge the TOC down a bit.
+const TOC_ALIGN_TO_FIRST_H2_PX = 8;
+
 const styles: Record<string, React.CSSProperties> = {
   page: {
     minHeight: "100vh",
@@ -378,6 +490,34 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     justifyContent: "center",
   },
+  articleWithToc: {
+    width: "100%",
+    maxWidth: 980,
+  },
+  toc: {
+    position: "sticky",
+    top: 192,
+    alignSelf: "start",
+    // Hidden by default; displayed via media query only on desktop.
+    display: "none",
+    gridColumn: 1,
+    gridRow: 2,
+  },
+  tocInner: {
+    // Align first TOC item with the first rendered H2 text (which has a top margin).
+    paddingTop: H2_MARGIN_TOP_PX + TOC_ALIGN_TO_FIRST_H2_PX,
+  },
+  tocLink: {
+    display: "block",
+    fontSize: 14,
+    lineHeight: "20px",
+    fontWeight: 400,
+    color: "#111111",
+    opacity: 0.4,
+    textDecoration: "none",
+    marginBottom: 10,
+    letterSpacing: "-0.01em",
+  },
   article: {
     width: "100%",
     maxWidth: 600,
@@ -385,6 +525,12 @@ const styles: Record<string, React.CSSProperties> = {
   header: {
     marginBottom: 96,
     textAlign: "left",
+  },
+  headerWithToc: {
+    marginBottom: 96,
+    textAlign: "left",
+    gridColumn: 2,
+    gridRow: 1,
   },
   profileImg: {
     width: 128,
@@ -424,10 +570,21 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#111111",
     letterSpacing: "-0.015em",
   },
+  contentWithToc: {
+    width: "100%",
+    maxWidth: 600,
+    fontSize: 16,
+    lineHeight: "24px",
+    fontWeight: 420,
+    color: "#111111",
+    letterSpacing: "-0.015em",
+    gridColumn: 2,
+    gridRow: 2,
+  },
   h2: {
     fontSize: 20,
     lineHeight: "32px",
-    marginTop: 48,
+    marginTop: H2_MARGIN_TOP_PX,
     marginBottom: 24,
     fontWeight: 480,
     // Figma letter-spacing "-2%" ≈ CSS letter-spacing "-0.02em"

@@ -71,6 +71,7 @@ export default async function ContentPageRoute({ params }: PageProps) {
       profileSrc={page.profileSrc}
       previous={previous}
       next={next}
+      toc={page.toc}
       markdown={page.markdown}
     />
   );
