@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "stories/personal-token.md",
+                "file": "about/america.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "personal-token"
+              "title": "america"
             }
           }
         ],
@@ -109,7 +109,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "stories/personal-token.md",
+                "file": "about/america.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for personal-token"
+              "title": "Backlinks for america"
             }
           },
           {
@@ -128,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "stories/personal-token.md",
+                "file": "about/america.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from personal-token"
+              "title": "Outgoing links from america"
             }
           },
           {
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "stories/personal-token.md",
+                "file": "about/america.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of personal-token"
+              "title": "Outline of america"
             }
           }
         ]
@@ -200,6 +200,7 @@
   },
   "active": "c062428b34009787",
   "lastOpenFiles": [
+    "stories/personal-token.md",
     "instruments/PERSONAL_TOKEN.md",
     "tokens/root.md",
     "tokens/shiv.md",
@@ -227,7 +228,6 @@
     "stories/delusion.md",
     "stories/uniting-world.md",
     "stories/tokens-will-eat-world.md",
-    "stories/personal-token.md",
     "stories/help.md",
     "stories/investing-personal-tokens.md",
     "landing.config.json"

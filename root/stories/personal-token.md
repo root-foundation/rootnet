@@ -224,7 +224,7 @@ yes, we will need to build products and services that represent tokens and enabl
 
 there is still work to do to legally ground the personal token. consider helping. current spec: [PERSONAL TOKEN v0.1](/PERSONAL_TOKEN).
 
-## a world that supports explorations
+## supporting explorations
 
 with personal tokens, we can support bolder, riskier explorations. 
 
