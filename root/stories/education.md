@@ -64,3 +64,7 @@ ai has already made [outcomes extreme](/tokens-will-eat-world) for knowledge wor
 we can see signs. many new grads are struggling to get jobs while there is nearly infinite demand for the best - because of extreme outcomes. (paradoxically, the market is simultaneously the best it has ever been, and the worst - for different groups).
 
 without shifting the burden of education away from students, we will quickly find many young people burdened by debt that they can't climb out of anytime soon. not because they don't have the capacity, but due to the stress of being in debt without a clear path out. this is deeply unfair. a tragedy for all of us.
+
+---
+
+> thanks to [deepak](https://www.debugjois.dev/) for feedback on an early draft.
