@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "rootnet",
 };
 
+export const runtime = "nodejs";
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export default async function Home() {
   const config = LANDING_CONFIG;
   const metaBySlug = await getLandingMetaBySlug(config);

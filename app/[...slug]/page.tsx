@@ -2,18 +2,29 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
 import { MarkdownArticle } from "@/app/_components/MarkdownArticle";
-import { getAllContentSlugs, getContentMetaBySlug, getContentPageBySlug } from "@/lib/content";
+import {
+  getAllContentSlugs,
+  getContentMetaBySlug,
+  getContentPageBySlug,
+} from "@/lib/content";
 
 type PageProps = {
   params: Promise<{ slug: string[] }>;
 };
+
+export const runtime = "nodejs";
+export const dynamic = "force-static";
+export const revalidate = false;
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = await getAllContentSlugs();
   return slugs.map((s) => ({ slug: [s] }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
 
   try {

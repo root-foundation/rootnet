@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
+import { cache } from "react";
 
 import { LANDING_CONFIG } from "@/lib/landing";
 
@@ -24,7 +25,7 @@ type NavIndex = {
 
 let navIndexPromise: Promise<NavIndex> | null = null;
 
-async function getNavIndex(): Promise<NavIndex> {
+async function getNavIndexUncached(): Promise<NavIndex> {
   if (!navIndexPromise) {
     navIndexPromise = (async () => {
       const rootIndex = await getRootIndex();
@@ -91,6 +92,8 @@ async function getNavIndex(): Promise<NavIndex> {
   return navIndexPromise;
 }
 
+const getNavIndex = cache(getNavIndexUncached);
+
 async function getPrevNextSlugsFromConfig(slug: string): Promise<{
   previousSlug?: string;
   nextSlug?: string;
@@ -128,7 +131,7 @@ export type ContentMeta = {
   profileSrc?: string;
 };
 
-export async function getContentMetaBySlug(slug: string): Promise<ContentMeta> {
+async function getContentMetaBySlugUncached(slug: string): Promise<ContentMeta> {
   const normalized = normalizeSlugRef(slug);
   if (!normalized) {
     const err = new Error("Not found");
@@ -161,6 +164,8 @@ export async function getContentMetaBySlug(slug: string): Promise<ContentMeta> {
 
   return { slug: normalized, title: title.trim(), profileSrc };
 }
+
+export const getContentMetaBySlug = cache(getContentMetaBySlugUncached);
 
 function assertValidSlugParts(slugParts: string[]) {
   for (const part of slugParts) {
@@ -206,7 +211,7 @@ function slugifyFilename(filename: string) {
   return filename;
 }
 
-async function getRootIndex(): Promise<RootIndex> {
+async function getRootIndexUncached(): Promise<RootIndex> {
   if (!rootIndexPromise) {
     rootIndexPromise = (async () => {
       const absolutePaths = await listMarkdownFilesRecursively(
@@ -252,6 +257,8 @@ async function getRootIndex(): Promise<RootIndex> {
   return rootIndexPromise;
 }
 
+const getRootIndex = cache(getRootIndexUncached);
+
 function humanizeSlug(slug: string) {
   return slug
     .replace(/[-_]+/g, " ")
@@ -270,7 +277,7 @@ function getTitleFromMarkdownContent(markdown: string) {
   return null;
 }
 
-export async function getContentPageBySlug(
+async function getContentPageBySlugUncached(
   slugParts: string[]
 ): Promise<ContentPage> {
   assertValidSlugParts(slugParts);
@@ -328,6 +335,8 @@ export async function getContentPageBySlug(
     fileRelativePath: hit.fileRelativePath,
   };
 }
+
+export const getContentPageBySlug = cache(getContentPageBySlugUncached);
 
 export async function getAllContentSlugs(): Promise<string[]> {
   const index = await getRootIndex();
