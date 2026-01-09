@@ -178,7 +178,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: "block",
     objectFit: "contain",
     objectPosition: "center",
-    transform: "translate(1px, 1px)",
+    transform: "translate(0px, 0px)",
     borderRadius: 999,
   },
 };
