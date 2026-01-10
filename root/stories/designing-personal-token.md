@@ -221,8 +221,6 @@ at its core, the personal token is a legal instrument.
 
 yes, we will need to build products and services that represent tokens and enable us to engage with them, but without legal legitimacy, this instrument will not work.
 
-there is still work to do to legally ground the personal token. consider helping. current spec: [PERSONAL TOKEN v0.1](/PERSONAL_TOKEN).
-
 ## supporting explorations
 
 with personal tokens, we can support bolder, riskier explorations. 

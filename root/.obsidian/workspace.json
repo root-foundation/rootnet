@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/designing-personal-token.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "tokens-will-eat-world"
+              "title": "designing-personal-token"
             }
           }
         ],
@@ -123,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/designing-personal-token.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -133,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for tokens-will-eat-world"
+              "title": "Backlinks for designing-personal-token"
             }
           },
           {
@@ -142,12 +142,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/designing-personal-token.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from tokens-will-eat-world"
+              "title": "Outgoing links from designing-personal-token"
             }
           },
           {
@@ -185,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "stories/tokens-will-eat-world.md",
+                "file": "stories/designing-personal-token.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of tokens-will-eat-world"
+              "title": "Outline of designing-personal-token"
             }
           }
         ]
@@ -214,6 +214,7 @@
   },
   "active": "fe495391477203c6",
   "lastOpenFiles": [
+    "stories/tokens-will-eat-world.md",
     "instruments/PERSONAL_TOKEN.md",
     "instruments/personal-token.md",
     "personal-token.synctex(busy)",
@@ -248,7 +249,6 @@
     "rootnet/exploration.md",
     "stories/culture.md",
     "stories/growth.md",
-    "stories/fixing-markets.md",
-    "stories/tokens-will-eat-world.md"
+    "stories/fixing-markets.md"
   ]
 }
