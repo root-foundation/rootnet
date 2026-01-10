@@ -10,7 +10,7 @@
     {
       "kind": "list",
       "title": "instruments",
-      "links": [{ "slug": "PERSONAL_TOKEN" }, { "slug": "NETWORK_TOKEN" }]
+      "links": [{ "slug": "personal-token" }]
     },
     {
       "kind": "story",
@@ -18,9 +18,10 @@
       "groups": [
         [
           { "slug": "help" },
-          { "slug": "personal-token" },
+          { "slug": "designing-personal-token" },
           { "slug": "investing-personal-tokens" },
-          { "slug": "tokens-will-eat-world" }
+          { "slug": "tokens-will-eat-world" },
+          { "slug": "education" }
         ],
         [
           { "slug": "delusion" },
@@ -30,12 +31,8 @@
         [
           { "slug": "psychosis" },
           { "slug": "fixing-markets" },
-          { "slug": "growth" }
-        ],
-        [
-          { "slug": "education" },
-          { "slug": "rising-above-transactional" },
-          { "slug": "ai-will-never-replace-us" }
+          { "slug": "growth" },
+          { "slug": "rising-above-transactional" }
         ]
       ]
     },

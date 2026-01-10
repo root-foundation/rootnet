@@ -27,16 +27,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "stories/education.md",
+                "file": "stories/uniting-world.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "education"
+              "title": "uniting-world"
+            }
+          },
+          {
+            "id": "fe495391477203c6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "stories/tokens-will-eat-world.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "tokens-will-eat-world"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -68,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "/personal-token",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -109,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "stories/education.md",
+                "file": "stories/tokens-will-eat-world.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for education"
+              "title": "Backlinks for tokens-will-eat-world"
             }
           },
           {
@@ -128,12 +142,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "stories/education.md",
+                "file": "stories/tokens-will-eat-world.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from education"
+              "title": "Outgoing links from tokens-will-eat-world"
             }
           },
           {
@@ -171,13 +185,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "stories/education.md",
+                "file": "stories/tokens-will-eat-world.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of education"
+              "title": "Outline of tokens-will-eat-world"
             }
           }
         ]
@@ -198,14 +212,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "10dd14ef05ad80e0",
+  "active": "fe495391477203c6",
   "lastOpenFiles": [
-    "stories/uniting-world.md",
-    "stories/psychosis.md",
-    "stories/personal-token.md",
-    "stories/education.md",
-    "stories/delusion.md",
     "instruments/PERSONAL_TOKEN.md",
+    "instruments/personal-token.md",
+    "personal-token.synctex(busy)",
+    "xelatex31172.fls",
+    "xelatex31121.fls",
+    "personal-token.synctex.gz",
+    "xelatex31119.fls",
+    "xelatex31090.fls",
+    "xelatex31089.fls",
+    "xelatex31024.fls",
+    "xelatex30903.fls",
+    "xelatex30886.fls",
+    "stories/uniting-world.md",
+    "stories/education.md",
+    "stories/designing-personal-token.md",
+    "stories/investing-personal-tokens.md",
+    "stories/psychosis.md",
+    "stories/delusion.md",
     "about/america.md",
     "tokens/root.md",
     "tokens/shiv.md",
@@ -213,11 +239,7 @@
     "about/support.md",
     "about/next-steps.md",
     "about/exploration.md",
-    "about",
     "tokens/homan.md",
-    "prompt/AI_PROMPT.txt",
-    "prompt/USER_INSTRUCTIONS.txt",
-    "prompt",
     "rootnet/thanks.md",
     "rootnet/support.md",
     "rootnet/join.md",
@@ -227,9 +249,6 @@
     "stories/culture.md",
     "stories/growth.md",
     "stories/fixing-markets.md",
-    "stories/tokens-will-eat-world.md",
-    "stories/help.md",
-    "stories/investing-personal-tokens.md",
-    "landing.config.json"
+    "stories/tokens-will-eat-world.md"
   ]
 }

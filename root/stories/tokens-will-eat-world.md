@@ -5,7 +5,7 @@ to understand why, we need to first study how our world will change.
 
 ## artificial intelligence
 
-fundamentally, i view artificial intelligence as a tool that enables us to better express ourselves. and that [ai will never replace us](/ai-will-never-replace-us).
+artificial intelligence is a tool that enables us to better express ourselves.
 
 as ai improves, we will naturally gravitate towards more creative and complex work - across the board - because ai will do the simpler, less creative work for us.
 

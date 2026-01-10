@@ -1,9 +1,8 @@
 ---
-title: personal token
-caption: incentivize help for life itself.
+title: designing the personal token
+caption:
 toc: true
 ---
-
 ## an instrument
 
 we can't incentivize help for explorations, and for life itself, in the way we can for ideas (through companies).
