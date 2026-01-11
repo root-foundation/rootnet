@@ -1,6 +1,5 @@
 {
-  "heroKickerLines": ["rootnet is an exploration"],
-  "heroTitleLines": ["to align incentives with reality"],
+  "heroTitleLines": ["rootnet is an exploration of new primitives."],
 
   "sections": [
     {
@@ -12,40 +11,9 @@
       ]
     },
     {
-      "kind": "story",
-      "title": "story",
-      "groups": [
-        [
-          { "slug": "designing-personal-token" },
-          { "slug": "investing-personal-tokens" },
-          { "slug": "tokens-will-eat-world" },
-          { "slug": "education" }
-        ],
-        [
-          { "slug": "delusion" },
-          { "slug": "unity-incentives" },
-          { "slug": "uniting-world" }
-        ],
-        [
-          { "slug": "psychosis" },
-          { "slug": "fixing-markets" },
-          { "slug": "growth" },
-          { "slug": "rising-above-transactional" }
-        ]
-      ]
-    },
-    {
-      "kind": "list",
-      "title": "tokens",
-      "links": [{ "slug": "root" }, { "slug": "homan" }]
-    },
-    {
       "kind": "list",
       "title": "about",
       "links": [
-        { "slug": "exploration" },
-        { "slug": "america" },
-        { "slug": "next-steps" },
         {
           "slug": "contact",
           "titleOverride": "contact",
@@ -55,8 +23,7 @@
           "slug": "source",
           "titleOverride": "source",
           "href": "https://github.com/root-foundation/rootnet"
-        },
-        { "slug": "thanks" }
+        }
       ]
     }
   ]
