@@ -1,6 +1,6 @@
 ---
 title: personal token specification
-caption: a primitive for sharing lifetime upside to incentivize collaboration beyond any single idea.
+caption: a primitive for sharing lifetime upside
 ---
 
 ## 1. Problem
