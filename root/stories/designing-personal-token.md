@@ -1,8 +1,44 @@
 ---
 title: designing the personal token
-caption:
 toc: true
 ---
+
+## can't incentivize help
+
+we have a robust system to allocate talent, attention, and capital towards ideas - through _companies_, but we have nothing to allocate the same for explorations.
+
+as a result, we all lose out far more than we can imagine.
+
+let me show you this problem through my lens:
+
+towards the end of 2023, i saw ai do something that shook my beliefs about our world. i dropped everything and started an open-ended exploration to understand how our world will change.
+
+this exploration has been the most difficult thing i've done.
+
+through this experience, i've learned that i cannot explore effectively alone. i need help. a lot of it.
+
+**but i can't _incentivize_ help!**
+
+i've asked and received help from many people. i'm grateful.
+
+but as a previous startup founder, i knew the kind of help i wanted: deeply committed, serious, intense. the kind of help that doing really difficult things requires.
+
+but i cant _incentivize_ help! i have no way to give people a stake in my success on this journey. i can't start a "company" for an exploration that i'm not even sure would lead to a company anytime soon, if ever!
+
+as a result, i've progressed on this exploration far slower than i would have liked.
+
+**i'm not alone.**
+
+in the same way we would not be able to get great ideas off the ground without being able to share equity in it (through the notion of a company),
+
+we cannot get many profound explorations off the ground. there are many people who cannot follow their curiosities because they cannot incentivize the help and support they need to get started.
+
+we have lost, and continue to lose, many explorations that would lead to incredible ideas that would change our world. we will only be able to see this in hindsight.
+
+this is a lose-lose situation.
+
+let's fix this.
+
 ## an instrument
 
 we can't incentivize help for explorations, and for life itself, in the way we can for ideas (through companies).
@@ -31,7 +67,7 @@ we can implement this grounding through dividends: capital gains from when i sel
 
 ## does not confine
 
-importantly, my token doesn't confine me to any particular path in life. 
+importantly, my token doesn't confine me to any particular path in life.
 
 perhaps i decide i want to join a great startup instead of starting one myself. or maybe i only go onto invest in companies.
 
@@ -143,7 +179,7 @@ if someone becomes misaligned, harmful, or toxic, i retain the right to buy back
 
 ### d) scoped to upside
 
-my token is grounded in capital gains from companies - not income, wages, or other assets. 
+my token is grounded in capital gains from companies - not income, wages, or other assets.
 
 which means shareholders succeed only when i create meaningful value in the world.
 
@@ -155,7 +191,7 @@ this puts a lot of control in the hands of the token owner. some may feel it's t
 
 but the long-term nature of this instrument helps prevent abuse through reputation.
 
-**by being unfair in any way, i make it impossible to achieve my potential** - because i will spook existing shareholders and also future collaborators. 
+**by being unfair in any way, i make it impossible to achieve my potential** - because i will spook existing shareholders and also future collaborators.
 
 what is fair is decided by everyone. if i do something i think is fair but the market thinks is not, i will naturally have to adapt, else i will no longer be able to incentivize the help i need.
 
@@ -175,20 +211,22 @@ we need to fix this.
 
 i want to maximize my growth. the more help i can incentivize, the more i can grow.
 
-but the more diluted i am, the less capital i will have to fuel my growth because i lose more of my capital gains through dividends to my shareholders. 
+but the more diluted i am, the less capital i will have to fuel my growth because i lose more of my capital gains through dividends to my shareholders.
 
 this bad for both my shareholders and myself. a lose-lose situation.
 
 we need to add features that maximize growth.
 
 ---
+
 ### royalties
 
-every time a shareholder sells some of their shares in my token, i receive back a small percentage of those shares. 
+every time a shareholder sells some of their shares in my token, i receive back a small percentage of those shares.
 
 the more i grow, the more equity i earn back in my token that i can share with others to help me grow even more.
 
 ---
+
 ### reinvesting dividends
 
 i will need to reinvest dividends into myself, to fuel my growth.
@@ -217,13 +255,13 @@ check out [my token](/homan) to see this idea grounded in reality.
 
 ## legal
 
-at its core, the personal token is a legal instrument. 
+at its core, the personal token is a legal instrument.
 
 yes, we will need to build products and services that represent tokens and enable us to engage with them, but without legal legitimacy, this instrument will not work.
 
 ## supporting explorations
 
-with personal tokens, we can support bolder, riskier explorations. 
+with personal tokens, we can support bolder, riskier explorations.
 
 the kind of explorations that would lead us to discover many profound ideas.
 

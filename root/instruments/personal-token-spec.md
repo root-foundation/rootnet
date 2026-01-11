@@ -1,5 +1,5 @@
 ---
-title: personal token
+title: personal token specification
 caption: a primitive for sharing lifetime upside to incentivize collaboration beyond any single idea.
 ---
 

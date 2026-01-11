@@ -1,23 +1,21 @@
 {
   "heroKickerLines": ["rootnet is an exploration"],
-  "heroTitleLines": [
-    "to surface and amplify incentives that align humanity with reality."
-  ],
-  "heroCaptionLines": [
-    "through financial primitives that unlock individual and collective potential. so that we rise together in the age of ai."
-  ],
+  "heroTitleLines": ["to align incentives with reality"],
+
   "sections": [
     {
       "kind": "list",
-      "title": "instruments",
-      "links": [{ "slug": "personal-token" }]
+      "title": "personal token",
+      "links": [
+        { "slug": "personal-token-spec" },
+        { "slug": "personal-token-implementation" }
+      ]
     },
     {
       "kind": "story",
       "title": "story",
       "groups": [
         [
-          { "slug": "help" },
           { "slug": "designing-personal-token" },
           { "slug": "investing-personal-tokens" },
           { "slug": "tokens-will-eat-world" },
@@ -48,7 +46,11 @@
         { "slug": "exploration" },
         { "slug": "america" },
         { "slug": "next-steps" },
-        { "slug": "support" },
+        {
+          "slug": "contact",
+          "titleOverride": "contact",
+          "href": "https://x.com/heyhoman"
+        },
         {
           "slug": "source",
           "titleOverride": "source",
