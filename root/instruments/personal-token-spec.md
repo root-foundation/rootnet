@@ -1,6 +1,6 @@
 ---
 title: personal token specification
-caption: a primitive for sharing lifetime upside
+caption: a primitive for sharing equity in value created across a lifetime.
 ---
 
 ## 1. Problem
@@ -21,7 +21,7 @@ A personal token has shares. Each share represents a proportional claim on the t
 
 A personal token is valued at the level of a life, not a single idea.
 
-As with other financial assets, valuation is based on expectations of future outcomes rather than current state. A personal token may therefore be valued well above the individual’s present holdings, proportional to belief in their potential.
+As with other financial assets, valuation is based on expectations of future outcomes rather than the current state. A personal token may therefore be valued well above the token owner's present holdings - proportional to belief in their potential.
 
 ## 4. Collaboration
 
@@ -41,7 +41,7 @@ Secondary sales require the token owner’s approval.
 
 ## 6. Safety
 
-A token owner can divorce themselves from shareholders by buying back equity at the current fair market value.
+Token owners can divorce themselves from shareholders by buying back equity at the current fair market value.
 
 The token does not directly expose the token owner’s equity holdings to shareholder claims, or constrain how the owner creates value.
 
