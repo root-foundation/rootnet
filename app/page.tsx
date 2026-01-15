@@ -7,8 +7,9 @@ import {
   type LandingConfig,
   type LandingLink,
 } from "@/lib/landing";
-import { getContentMetaBySlug } from "@/lib/content";
+import { getContentMetaBySlug, getOverviewMarkdown } from "@/lib/content";
 import { LinkPill } from "@/app/_components/LinkPill";
+import { MarkdownBody } from "@/app/_components/MarkdownArticle";
 
 export const metadata: Metadata = {
   title: "rootnet",
@@ -21,6 +22,7 @@ export const revalidate = false;
 export default async function Home() {
   const config = LANDING_CONFIG;
   const metaBySlug = await getLandingMetaBySlug(config);
+  const overviewMarkdown = await getOverviewMarkdown();
 
   return (
     <main style={styles.page}>
@@ -46,6 +48,10 @@ export default async function Home() {
                 </span>
               ))}
             </h1>
+
+            <div style={styles.overviewWrap}>
+              <MarkdownBody markdown={overviewMarkdown} />
+            </div>
           </div>
 
           {config.heroCaptionLines?.length ? (
@@ -145,9 +151,13 @@ function humanizeSlug(slug: string) {
 }
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
+  const normalizedTitle = title.trim().toLowerCase();
+  const hideTitle =
+    normalizedTitle === "personal token" || normalizedTitle === "about";
+
   return (
     <section style={styles.section}>
-      <div style={styles.sectionTitle}>{title}</div>
+      {hideTitle ? null : <div style={styles.sectionTitle}>{title}</div>}
       <div style={styles.sectionBody}>{children}</div>
     </section>
   );
@@ -249,7 +259,7 @@ const styles: Record<string, React.CSSProperties> = {
   },
   container: {
     width: "100%",
-    maxWidth: 600,
+    maxWidth: 510,
   },
   hero: {
     textAlign: "left",
@@ -287,6 +297,9 @@ const styles: Record<string, React.CSSProperties> = {
   },
   heroTitleLine: {
     display: "block",
+  },
+  overviewWrap: {
+    marginTop: 24,
   },
   heroCaption: {
     marginTop: 0,

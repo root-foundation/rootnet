@@ -18,6 +18,203 @@ type MarkdownArticleProps = {
   markdown: string;
 };
 
+type MarkdownBodyProps = {
+  markdown: string;
+  headingIdSlugger?: (rawHeadingText: string) => string;
+  containerStyle?: React.CSSProperties;
+  applyDefaultContainerStyle?: boolean;
+};
+
+export function MarkdownBody({
+  markdown,
+  headingIdSlugger: providedSlugger,
+  containerStyle,
+  applyDefaultContainerStyle = true,
+}: MarkdownBodyProps) {
+  const headingIdSlugger = providedSlugger ?? createHeadingIdSlugger();
+  const baseStyle = applyDefaultContainerStyle ? styles.content : undefined;
+
+  return (
+    <div style={{ ...(baseStyle ?? {}), ...(containerStyle ?? {}) }}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          // Rule: top heading is the page title (from frontmatter/filename).
+          // Any markdown H1 inside the body should render as an H2.
+          h1: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h2 style={styles.h2} {...props} id={id}>
+                {children}
+              </h2>
+            );
+          },
+          // Rule: other headings are H2s.
+          h2: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h2 style={styles.h2} {...props} id={id}>
+                {children}
+              </h2>
+            );
+          },
+          // Rule: H3 should look like body text, just 500 weight.
+          h3: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h3 style={styles.h3AsBody} {...props} id={id}>
+                {children}
+              </h3>
+            );
+          },
+          h4: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h4 style={styles.h3AsBody} {...props} id={id}>
+                {children}
+              </h4>
+            );
+          },
+          h5: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h5 style={styles.h3AsBody} {...props} id={id}>
+                {children}
+              </h5>
+            );
+          },
+          h6: ({ node: _node, children, ...props }) => {
+            const id = headingIdSlugger(getTextFromReactNode(children));
+            return (
+              <h6 style={styles.h3AsBody} {...props} id={id}>
+                {children}
+              </h6>
+            );
+          },
+          p: ({ node, ...props }) => {
+            const standaloneUrl = getStandaloneUrlFromParagraphNode(node);
+            const embedUrl = standaloneUrl
+              ? getYouTubeEmbedUrl(standaloneUrl)
+              : null;
+
+            if (embedUrl) {
+              return (
+                <div style={styles.youtubeWrap}>
+                  <div style={styles.youtubeFrame}>
+                    <iframe
+                      src={embedUrl}
+                      title="YouTube video"
+                      style={styles.youtubeIframe}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              );
+            }
+
+            return <p style={styles.p} {...props} />;
+          },
+          ul: ({ node: _node, ...props }) => (
+            <ul style={styles.ul} {...props} />
+          ),
+          ol: ({ node: _node, ...props }) => (
+            <ol style={styles.ol} {...props} />
+          ),
+          li: (liProps) => {
+            const { node: _node, children, ...props } = liProps;
+            // `react-markdown` provides `ordered` at runtime, but the published types
+            // don’t include it on the `li` renderer props.
+            const ordered = Boolean(
+              (liProps as unknown as { ordered?: boolean }).ordered
+            );
+            const normalizedChildren = React.Children.map(children, (child) => {
+              // ReactMarkdown commonly wraps list item content in a <p>.
+              // Our paragraph style has a large bottom margin that makes list
+              // spacing look wrong, so we zero it out inside list items.
+              if (React.isValidElement(child) && child.type === "p") {
+                const childProps = (
+                  child as React.ReactElement<{
+                    style?: React.CSSProperties;
+                  }>
+                ).props;
+                return React.cloneElement(
+                  child as React.ReactElement<
+                    React.HTMLAttributes<HTMLParagraphElement>
+                  >,
+                  {
+                    style: {
+                      ...(childProps.style ?? {}),
+                      ...styles.pInListItem,
+                    },
+                  }
+                );
+              }
+              return child;
+            });
+
+            if (ordered) {
+              return (
+                <li style={styles.liOrdered} {...props}>
+                  {normalizedChildren}
+                </li>
+              );
+            }
+
+            return (
+              <li style={styles.liUnordered} {...props}>
+                <span aria-hidden style={styles.liDash}>
+                  <DashIcon />
+                </span>
+                <span style={styles.liBody}>{normalizedChildren}</span>
+              </li>
+            );
+          },
+          blockquote: ({ node: _node, ...props }) => (
+            <blockquote style={styles.blockquote} {...props} />
+          ),
+          strong: ({ node: _node, ...props }) => (
+            <strong style={styles.strong} {...props} />
+          ),
+          a: ({ href, node: _node, ...props }) => (
+            <a
+              href={href}
+              style={styles.a}
+              target={href?.startsWith("#") ? undefined : "_blank"}
+              rel={href?.startsWith("#") ? undefined : "noreferrer"}
+              {...props}
+            />
+          ),
+          code: ({ children, node: _node, ...props }) => (
+            <code style={styles.codeInline} {...props}>
+              {children}
+            </code>
+          ),
+          pre: ({ node: _node, ...props }) => (
+            <pre style={styles.pre} {...props} />
+          ),
+          table: ({ node: _node, ...props }) => (
+            <div style={styles.tableWrap}>
+              <table style={styles.table} {...props} />
+            </div>
+          ),
+          th: ({ node: _node, ...props }) => (
+            <th style={styles.th} {...props} />
+          ),
+          td: ({ node: _node, ...props }) => (
+            <td style={styles.td} {...props} />
+          ),
+          hr: ({ node: _node, ...props }) => (
+            <hr style={styles.hr} {...props} />
+          ),
+        }}
+      >
+        {markdown || ""}
+      </ReactMarkdown>
+    </div>
+  );
+}
+
 export function MarkdownArticle({
   title,
   caption,
@@ -82,185 +279,11 @@ export function MarkdownArticle({
         {tocEl}
 
         <div style={showToc ? styles.contentWithToc : styles.content}>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              // Rule: top heading is the page title (from frontmatter/filename).
-              // Any markdown H1 inside the body should render as an H2.
-              h1: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h2 style={styles.h2} {...props} id={id}>
-                    {children}
-                  </h2>
-                );
-              },
-              // Rule: other headings are H2s.
-              h2: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h2 style={styles.h2} {...props} id={id}>
-                    {children}
-                  </h2>
-                );
-              },
-              // Rule: H3 should look like body text, just 500 weight.
-              h3: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h3 style={styles.h3AsBody} {...props} id={id}>
-                    {children}
-                  </h3>
-                );
-              },
-              h4: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h4 style={styles.h3AsBody} {...props} id={id}>
-                    {children}
-                  </h4>
-                );
-              },
-              h5: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h5 style={styles.h3AsBody} {...props} id={id}>
-                    {children}
-                  </h5>
-                );
-              },
-              h6: ({ node: _node, children, ...props }) => {
-                const id = headingIdSlugger(getTextFromReactNode(children));
-                return (
-                  <h6 style={styles.h3AsBody} {...props} id={id}>
-                    {children}
-                  </h6>
-                );
-              },
-              p: ({ node, ...props }) => {
-                const standaloneUrl = getStandaloneUrlFromParagraphNode(node);
-                const embedUrl = standaloneUrl
-                  ? getYouTubeEmbedUrl(standaloneUrl)
-                  : null;
-
-                if (embedUrl) {
-                  return (
-                    <div style={styles.youtubeWrap}>
-                      <div style={styles.youtubeFrame}>
-                        <iframe
-                          src={embedUrl}
-                          title="YouTube video"
-                          style={styles.youtubeIframe}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
-                        />
-                      </div>
-                    </div>
-                  );
-                }
-
-                return <p style={styles.p} {...props} />;
-              },
-              ul: ({ node: _node, ...props }) => (
-                <ul style={styles.ul} {...props} />
-              ),
-              ol: ({ node: _node, ...props }) => (
-                <ol style={styles.ol} {...props} />
-              ),
-              li: (liProps) => {
-                const { node: _node, children, ...props } = liProps;
-                // `react-markdown` provides `ordered` at runtime, but the published types
-                // don’t include it on the `li` renderer props.
-                const ordered = Boolean(
-                  (liProps as unknown as { ordered?: boolean }).ordered
-                );
-                const normalizedChildren = React.Children.map(
-                  children,
-                  (child) => {
-                    // ReactMarkdown commonly wraps list item content in a <p>.
-                    // Our paragraph style has a large bottom margin that makes list
-                    // spacing look wrong, so we zero it out inside list items.
-                    if (React.isValidElement(child) && child.type === "p") {
-                      const childProps = (
-                        child as React.ReactElement<{
-                          style?: React.CSSProperties;
-                        }>
-                      ).props;
-                      return React.cloneElement(
-                        child as React.ReactElement<
-                          React.HTMLAttributes<HTMLParagraphElement>
-                        >,
-                        {
-                          style: {
-                            ...(childProps.style ?? {}),
-                            ...styles.pInListItem,
-                          },
-                        }
-                      );
-                    }
-                    return child;
-                  }
-                );
-
-                if (ordered) {
-                  return (
-                    <li style={styles.liOrdered} {...props}>
-                      {normalizedChildren}
-                    </li>
-                  );
-                }
-
-                return (
-                  <li style={styles.liUnordered} {...props}>
-                    <span aria-hidden style={styles.liDash}>
-                      <DashIcon />
-                    </span>
-                    <span style={styles.liBody}>{normalizedChildren}</span>
-                  </li>
-                );
-              },
-              blockquote: ({ node: _node, ...props }) => (
-                <blockquote style={styles.blockquote} {...props} />
-              ),
-              strong: ({ node: _node, ...props }) => (
-                <strong style={styles.strong} {...props} />
-              ),
-              a: ({ href, node: _node, ...props }) => (
-                <a
-                  href={href}
-                  style={styles.a}
-                  target={href?.startsWith("#") ? undefined : "_blank"}
-                  rel={href?.startsWith("#") ? undefined : "noreferrer"}
-                  {...props}
-                />
-              ),
-              code: ({ children, node: _node, ...props }) => (
-                <code style={styles.codeInline} {...props}>
-                  {children}
-                </code>
-              ),
-              pre: ({ node: _node, ...props }) => (
-                <pre style={styles.pre} {...props} />
-              ),
-              table: ({ node: _node, ...props }) => (
-                <div style={styles.tableWrap}>
-                  <table style={styles.table} {...props} />
-                </div>
-              ),
-              th: ({ node: _node, ...props }) => (
-                <th style={styles.th} {...props} />
-              ),
-              td: ({ node: _node, ...props }) => (
-                <td style={styles.td} {...props} />
-              ),
-              hr: ({ node: _node, ...props }) => (
-                <hr style={styles.hr} {...props} />
-              ),
-            }}
-          >
-            {markdown || ""}
-          </ReactMarkdown>
-
+          <MarkdownBody
+            markdown={markdown}
+            headingIdSlugger={headingIdSlugger}
+            applyDefaultContainerStyle={false}
+          />
           <PrevNextNav previous={previous ?? null} next={next ?? null} />
         </div>
       </article>

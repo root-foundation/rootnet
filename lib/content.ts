@@ -132,7 +132,18 @@ export type ContentMeta = {
   profileSrc?: string;
 };
 
-async function getContentMetaBySlugUncached(slug: string): Promise<ContentMeta> {
+async function getOverviewMarkdownUncached(): Promise<string> {
+  const absolutePath = path.join(ROOT_CONTENT_DIR, "overview.md");
+  const raw = await fs.readFile(absolutePath, "utf8");
+  const parsed = matter(raw);
+  return parsed.content.trimStart();
+}
+
+export const getOverviewMarkdown = cache(getOverviewMarkdownUncached);
+
+async function getContentMetaBySlugUncached(
+  slug: string
+): Promise<ContentMeta> {
   const normalized = normalizeSlugRef(slug);
   if (!normalized) {
     const err = new Error("Not found");
