@@ -1,6 +1,4 @@
-we can incentivize help for ideas by sharing equity in companies.
-
-but we don’t have a way to incentivize help for exploration, learning, or life itself.
+we can incentivize help for ideas by sharing equity in companies, but we don’t have a way to incentivize help for exploration, learning, or life itself.
 
 as a result, many worthwhile explorations never begin or receive the help they need.
 
