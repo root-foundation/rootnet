@@ -19,7 +19,7 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const slugs = await getAllContentSlugs();
-  return slugs.map((s) => ({ slug: [s] }));
+  return slugs.map((s) => ({ slug: s.split("/").filter(Boolean) }));
 }
 
 export async function generateMetadata({

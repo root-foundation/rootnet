@@ -1,5 +1,5 @@
 ---
-title: personal token implementation (v0.1)
+title: personal token legal instrument (v0.1)
 toc: true
 ---
 

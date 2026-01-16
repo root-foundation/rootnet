@@ -6,8 +6,9 @@
       "kind": "list",
       "title": "personal token",
       "links": [
-        { "slug": "personal-token-spec" },
-        { "slug": "personal-token-implementation" }
+        { "slug": "personal-token/spec" },
+        { "slug": "personal-token/legal" },
+        { "slug": "personal-token/compliance" }
       ]
     },
     {

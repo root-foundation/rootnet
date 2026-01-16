@@ -143,11 +143,18 @@ async function getLandingMetaBySlug(config: LandingConfig) {
 }
 
 function humanizeSlug(slug: string) {
-  return slug
-    .replace(/[-_]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const parts = slug
+    .split("/")
+    .filter(Boolean)
+    .map((p) =>
+      p
+        .replace(/[-_]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    )
+    .filter(Boolean);
+  return parts.join(" / ");
 }
 
 function Section({ title, children }: { title: string; children: ReactNode }) {

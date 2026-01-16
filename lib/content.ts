@@ -16,7 +16,7 @@ export type ContentPage = {
   previousSlug?: string;
   nextSlug?: string;
   markdown: string;
-  fileRelativePath: string; // e.g. "root/stories/personal-token.md"
+  fileRelativePath: string; // e.g. "root/personal-token/spec.md"
 };
 
 type NavIndex = {
@@ -121,9 +121,10 @@ function normalizeSlugRef(input: string): string | null {
   const withoutLeadingSlash = trimmed.replace(/^\/+/, "");
   const withoutTrailingSlash = withoutLeadingSlash.replace(/\/+$/, "");
   if (!withoutTrailingSlash) return null;
-  // Must be a single route segment slug
-  assertValidSlugParts([withoutTrailingSlash]);
-  return withoutTrailingSlash;
+  const parts = withoutTrailingSlash.split("/").filter(Boolean);
+  if (!parts.length) return null;
+  assertValidSlugParts(parts);
+  return parts.join("/");
 }
 
 export type ContentMeta = {
@@ -217,10 +218,11 @@ async function listMarkdownFilesRecursively(
   return out;
 }
 
-function slugifyFilename(filename: string) {
-  // Requirement: URLs point to the filename (without extension).
-  // We keep it as-is (no case folding / transformations) so file names map directly to URLs.
-  return filename;
+function slugifyRelativeMarkdownPath(relativePathUnderRoot: string) {
+  // URLs point to the full path under `root/` (minus extension).
+  // Example: "personal-token/spec.md" -> "personal-token/spec"
+  const normalized = relativePathUnderRoot.split(path.sep).join("/");
+  return normalized.replace(/\.md$/i, "");
 }
 
 async function getRootIndexUncached(): Promise<RootIndex> {
@@ -236,8 +238,8 @@ async function getRootIndexUncached(): Promise<RootIndex> {
       const duplicates = new Map<string, string[]>();
 
       for (const absolutePath of absolutePaths) {
-        const filename = path.parse(absolutePath).name;
-        const slug = slugifyFilename(filename);
+        const relativeUnderRoot = path.relative(ROOT_CONTENT_DIR, absolutePath);
+        const slug = slugifyRelativeMarkdownPath(relativeUnderRoot);
         const fileRelativePath = path
           .relative(process.cwd(), absolutePath)
           .split(path.sep)
@@ -257,7 +259,7 @@ async function getRootIndexUncached(): Promise<RootIndex> {
           .map(([slug, paths]) => `- "${slug}": ${paths.join(" , ")}`)
           .join("\n");
         throw new Error(
-          `Duplicate markdown filenames found under "root/". Filenames must be unique if they map to the same URL slug.\n${msg}`
+          `Duplicate markdown paths found under "root/". Paths must be unique if they map to the same URL slug.\n${msg}`
         );
       }
 
@@ -272,11 +274,18 @@ async function getRootIndexUncached(): Promise<RootIndex> {
 const getRootIndex = cache(getRootIndexUncached);
 
 function humanizeSlug(slug: string) {
-  return slug
-    .replace(/[-_]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  const parts = slug
+    .split("/")
+    .filter(Boolean)
+    .map((p) =>
+      p
+        .replace(/[-_]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    )
+    .filter(Boolean);
+  return parts.join(" / ");
 }
 
 function getTitleFromMarkdownContent(markdown: string) {
@@ -294,15 +303,15 @@ async function getContentPageBySlugUncached(
 ): Promise<ContentPage> {
   assertValidSlugParts(slugParts);
 
-  // New rule: everything under root/ is addressable by the filename (without extension).
-  // Example: /personal-token -> root/stories/personal-token.md
-  if (slugParts.length !== 1) {
+  // Everything under `root/` is addressable by its relative path (minus extension).
+  // Example: /personal-token/spec -> root/personal-token/spec.md
+  if (slugParts.length < 1) {
     const err = new Error("Not found");
     (err as NodeJS.ErrnoException).code = "ENOENT";
     throw err;
   }
 
-  const slug = slugParts[0];
+  const slug = slugParts.join("/");
   const index = await getRootIndex();
   const hit = index.bySlug.get(slug);
   if (!hit) {
