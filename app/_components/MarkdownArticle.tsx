@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getYouTubeEmbedUrl } from "@/lib/youtube";
 import { PrevNextNav, type NavLink } from "@/app/_components/PrevNextNav";
 import { ArticleToc } from "@/app/_components/ArticleToc";
+import { HomeLogoBadge } from "@/app/_components/HomeLogoBadge";
 
 type MarkdownArticleProps = {
   title: string;
@@ -270,6 +271,7 @@ export function MarkdownArticle({
 
   return (
     <main style={styles.page}>
+      <HomeLogoBadge />
       <article
         id="essay-article"
         className={showToc ? "rn-article-layout" : undefined}
